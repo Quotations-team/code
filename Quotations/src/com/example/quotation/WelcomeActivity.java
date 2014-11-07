@@ -13,7 +13,11 @@ import com.parse.starter.R.id;
 import com.parse.starter.R.layout;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -27,7 +31,8 @@ import android.widget.Toast;
 public class WelcomeActivity extends Activity
 {
 	List<QuotationTable> wholeQuotationTable, threeRandomQuotationTable;
-	int[] threeQuoteIndexes;
+	//this 3 int will change late on
+	int rQuote1, rQuote2, rQuote3;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -44,9 +49,13 @@ public class WelcomeActivity extends Activity
 	{
 		wholeQuotationTable = new ArrayList<QuotationTable>();
 		threeRandomQuotationTable = new ArrayList<QuotationTable>();
-		threeQuoteIndexes = new int[3];
+		rQuote1 = 0;
+		rQuote2 = 1;
+		rQuote3 = 2;
 	}
 
+	//this query will be change later by only query here, only once and save all data in cell phone.
+	//when we need to access the data again, we access the local stored data.
 	public void queryData()
 	{
 		//retrieve list of data from parse.com server
@@ -75,7 +84,7 @@ public class WelcomeActivity extends Activity
 					{
 						QuotationTable newQuote = new QuotationTable();
 						newQuote.setID(quotation.getID());
-						newQuote.setTopic(quotation.getTopic());
+						newQuote.setCategory(quotation.getCategory());
 						newQuote.setQuote(quotation.getQuote());
 						wholeQuotationTable.add(newQuote);
 					}
@@ -87,23 +96,67 @@ public class WelcomeActivity extends Activity
 
 	public void generateRandomQuote()
 	{
-//		do
-//		{
-//			
-//		}
-//		while(threeQuoteIndexes[0] != threeQuoteIndexes[1] != threeQuoteIndexes[2]);
-//		rQuote1 = getRandomValue(0, wholeQuotationTable.size()-1);
-//		rQuote2 = getRandomValue(0, wholeQuotationTable.size()-1);
-//		rQuote3 = getRandomValue(0, wholeQuotationTable.size()-1);
-//		threeRandomQuotationTable.add(object)
+		rQuote1 = getRandomValue(0, wholeQuotationTable.size()-1);
+		rQuote2 = getRandomValue(0, wholeQuotationTable.size()-1);
+		rQuote3 = getRandomValue(0, wholeQuotationTable.size()-1);
+		threeRandomQuotationTable.add(wholeQuotationTable.get(rQuote1));
+		threeRandomQuotationTable.add(wholeQuotationTable.get(rQuote2));
+		threeRandomQuotationTable.add(wholeQuotationTable.get(rQuote3));
+		
 		ListView listView = (ListView) findViewById(R.id.lvRandomQuote);
 		//ArrayAdapter<QuotationTable> arrayAdapter = new ArrayAdapter<QuotationTable>(getBaseContext(), android.R.layout.simple_list_item_1, wholeQuotationTable);
-		ArrayAdapter<QuotationTable> arrayAdapter = new ArrayAdapter<QuotationTable>(getBaseContext(), android.R.layout.simple_list_item_1, wholeQuotationTable);
+		ArrayAdapter<QuotationTable> arrayAdapter = new ArrayAdapter<QuotationTable>(getBaseContext(), android.R.layout.simple_list_item_1, threeRandomQuotationTable);
 		listView.setAdapter(arrayAdapter);
 	}
 
 	public int getRandomValue(int minimumRange, int maximumRange)
 	{
 		return((int)((maximumRange-minimumRange+1)*Math.random() + minimumRange));
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		switch (item.getItemId())
+		{
+			case R.id.miToSearchPage:
+				Toast.makeText(this, "Clicked Menu item launch SearchActivity", Toast.LENGTH_SHORT).show();
+				Intent iToSearchPage1 = new Intent(this, SearchActivity.class);
+				startActivity(iToSearchPage1);
+				break;
+			case R.id.miToCategoryPage:
+				Toast.makeText(this, "Clicked Menu item launch CategoryActivity", Toast.LENGTH_SHORT).show();
+				Intent iToCategoryPage1 = new Intent(this, CategoryActivity.class);
+				startActivity(iToCategoryPage1);
+				break;
+			default:
+				break;
+		}
+		return true;
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
+	    //inflate the menu, this add item to the action bar if it is present
+		getMenuInflater().inflate(R.menu.welcome_menu, menu);
+	    return true;
+	}
+	
+	public void onToSearchPage(View v)
+	{
+		Toast.makeText(this, "Clicked Button launch SearchActivity", Toast.LENGTH_SHORT).show();
+		Intent iToSearchPage2 = new Intent(getBaseContext(), SearchActivity.class);
+		startActivity(iToSearchPage2);
+	}
+	
+	public void onToCategoryPage(View v)
+	{
+		Toast.makeText(this, "Clicked Button launch CategoryActivity", Toast.LENGTH_SHORT).show();
+		Intent iToCategoryPage2 = new Intent(getBaseContext(), CategoryActivity.class);
+		startActivity(iToCategoryPage2);
 	}
 }

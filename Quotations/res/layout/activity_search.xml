@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <TextView
+        android:id="@+id/tvSearchInstruction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/search_instruction" />
+
+    <EditText
+        android:id="@+id/etSearchKeyWord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tvSearchInstruction"
+        android:ems="10"
+        android:hint="@string/search_hint" />
+
+    <Button
+        android:id="@+id/btnSearch"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/etSearchKeyWord"
+        android:onClick="onSearchButtonClicked"
+        android:text="@string/search_button" />
+
+    <TextView
+        android:id="@+id/tvSearchResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btnSearch"
+        android:text="@string/search_result" />
+
+    <ListView
+        android:id="@+id/lvQuote"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tvSearchResult" >
+    </ListView>
+    
+    <Button
+        android:id="@+id/btnToWelcomePage"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="@string/button_to_welcome_page"
+        android:onClick="onToWelcomePage" />
+
+</RelativeLayout>

@@ -32,4 +32,14 @@
         android:text="@string/button_to_search_page"
         android:onClick="onToSearchPage" />
 
+    <Button
+        android:id="@+id/btnToCategoryPage"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/btnToSearchPage"
+        android:text="@string/button_to_category_page"
+        android:onClick="onToCategoryPage" />
+
 </RelativeLayout>

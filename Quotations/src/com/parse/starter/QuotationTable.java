@@ -28,14 +28,14 @@ public class QuotationTable extends ParseObject
 		put("ID", id);
 	}
 	
-	public String getTopic()
+	public String getCategory()
 	{
-		return getString("Topic");
+		return getString("Category");
 	}
 	
-	public void setTopic(String topic)
+	public void setCategory(String category)
 	{
-		put("Topic", topic);
+		put("Category", category);
 	}
 	
 	public String getQuote()
@@ -52,6 +52,6 @@ public class QuotationTable extends ParseObject
 	@Override
 	public String toString()
 	{
-		return "Quote # " + getID() + "\nType: " + getTopic() + "\nQuote: " + getQuote();
+		return "Quote # " + getID() + "\nCategory: " + getCategory() + "\nQuote: " + getQuote();
 	}
 }
