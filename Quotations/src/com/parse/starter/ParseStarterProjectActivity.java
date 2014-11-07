@@ -7,6 +7,7 @@ import java.util.List;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -109,11 +110,27 @@ public class ParseStarterProjectActivity extends Activity
 						quotationTable.add(newQuote);
 					}
 				}
-
-				ListView listView = (ListView) findViewById(R.id.lvQuote);
-				ArrayAdapter<QuotationTable> arrayAdapter = new ArrayAdapter<QuotationTable>(getBaseContext(), android.R.layout.simple_list_item_1, quotationTable);
-				listView.setAdapter(arrayAdapter);
+				
+				generateRandomQuote();
 			}
 		});
+	}
+	
+	public void generateRandomQuote()
+	{
+		ListView listView = (ListView) findViewById(R.id.lvQuote);
+		ArrayAdapter<QuotationTable> arrayAdapter = new ArrayAdapter<QuotationTable>(getBaseContext(), android.R.layout.simple_list_item_1, quotationTable);
+		listView.setAdapter(arrayAdapter);
+	}
+	
+	public void onSearchButtonClicked(View v)
+	{
+		ListView listView = (ListView) findViewById(R.id.lvQuote);
+		ArrayAdapter<QuotationTable> arrayAdapter = new ArrayAdapter<QuotationTable>(getBaseContext(), android.R.layout.simple_list_item_1, quotationTable);
+		listView.setAdapter(arrayAdapter);
+	}
+	public int getRandomValue(int minimumRange, int maximumRange)
+	{
+	   return((int)((maximumRange-minimumRange+1)*Math.random() + minimumRange));
 	}
 }

@@ -2,6 +2,10 @@
 <resources>
     <string name="search_instruction">Enter a quote key word to search a quote.</string>
     <string name="search_hint">Enter search here</string>
+    <string name="search_button">Search</string>
     <string name="search_result">Result</string>
     <string name="app_name">ParseStarterProject</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="random_quote_label">Random Quotes</string>
+    <string name="button_to_search_page">To Search Page</string>
 </resources>
