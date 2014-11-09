@@ -89,6 +89,8 @@ public class WelcomeActivity extends Activity
 						wholeQuotationTable.add(newQuote);
 					}
 				}
+				//need to call it here, wait for fetch data,
+				//if later on stored data on phone, can call it somewhere else
 				generateRandomQuote();
 			}
 		});
@@ -117,20 +119,72 @@ public class WelcomeActivity extends Activity
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
+		Intent iMenuWelcPageToSrchPage = new Intent(getBaseContext(), SearchActivity.class);
+		Intent iMenuWelcPageToCatPage = new Intent(getBaseContext(), CategoryActivity.class);
+		
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		switch (item.getItemId())
 		{
-			case R.id.miToSearchPage:
+			case R.id.miWelcPageToSrchPage:
 				Toast.makeText(this, "Clicked Menu item launch SearchActivity", Toast.LENGTH_SHORT).show();
-				Intent iToSearchPage1 = new Intent(this, SearchActivity.class);
-				startActivity(iToSearchPage1);
+				startActivity(iMenuWelcPageToSrchPage);
 				break;
-			case R.id.miToCategoryPage:
+			case R.id.miWelcPageToCatPage:
 				Toast.makeText(this, "Clicked Menu item launch CategoryActivity", Toast.LENGTH_SHORT).show();
-				Intent iToCategoryPage1 = new Intent(this, CategoryActivity.class);
-				startActivity(iToCategoryPage1);
+				iMenuWelcPageToCatPage.putExtra("selected category", "selected none");
+				startActivity(iMenuWelcPageToCatPage);
+				break;
+			case R.id.miSubCat_computer:
+				Toast.makeText(this, "Clicked Sub Menu item launch CategoryActivity", Toast.LENGTH_SHORT).show();
+				iMenuWelcPageToCatPage.putExtra("selected category", "computer");
+				startActivity(iMenuWelcPageToCatPage);
+				break;
+			case R.id.miSubCat_family:
+				Toast.makeText(this, "Clicked Sub Menu item family", Toast.LENGTH_SHORT).show();
+				iMenuWelcPageToCatPage.putExtra("selected category", "family");
+				startActivity(iMenuWelcPageToCatPage);
+				break;
+			case R.id.miSubCat_food:
+				Toast.makeText(this, "Clicked Sub Menu item food", Toast.LENGTH_SHORT).show();
+				iMenuWelcPageToCatPage.putExtra("selected category", "food");
+				startActivity(iMenuWelcPageToCatPage);
+				break;
+			case R.id.miSubCat_funny:
+				Toast.makeText(this, "Clicked Sub Menu item funny", Toast.LENGTH_SHORT).show();
+				iMenuWelcPageToCatPage.putExtra("selected category", "funny");
+				startActivity(iMenuWelcPageToCatPage);
+				break;
+			case R.id.miSubCat_inspirational:
+				Toast.makeText(this, "Clicked Sub Menu item inspirational", Toast.LENGTH_SHORT).show();
+				iMenuWelcPageToCatPage.putExtra("selected category", "inspirational");
+				startActivity(iMenuWelcPageToCatPage);
+				break;
+			case R.id.miSubCat_motivational:
+				Toast.makeText(this, "Clicked Sub Menu item motivational", Toast.LENGTH_SHORT).show();
+				iMenuWelcPageToCatPage.putExtra("selected category", "motivational");
+				startActivity(iMenuWelcPageToCatPage);
+				break;
+			case R.id.miSubCat_music:
+				Toast.makeText(this, "Clicked Sub Menu item music", Toast.LENGTH_SHORT).show();
+				iMenuWelcPageToCatPage.putExtra("selected category", "music");
+				startActivity(iMenuWelcPageToCatPage);
+				break;
+			case R.id.miSubCat_positive:
+				Toast.makeText(this, "Clicked Sub Menu item positive", Toast.LENGTH_SHORT).show();
+				iMenuWelcPageToCatPage.putExtra("selected category", "positive");
+				startActivity(iMenuWelcPageToCatPage);
+				break;
+			case R.id.miSubCat_smile:
+				Toast.makeText(this, "Clicked Sub Menu item smile", Toast.LENGTH_SHORT).show();
+				iMenuWelcPageToCatPage.putExtra("selected category", "smile");
+				startActivity(iMenuWelcPageToCatPage);
+				break;
+			case R.id.miSubCat_wisdom:
+				Toast.makeText(this, "Clicked Sub Menu item wisdom", Toast.LENGTH_SHORT).show();
+				iMenuWelcPageToCatPage.putExtra("selected category", "wisdom");
+				startActivity(iMenuWelcPageToCatPage);
 				break;
 			default:
 				break;
@@ -146,17 +200,17 @@ public class WelcomeActivity extends Activity
 	    return true;
 	}
 	
-	public void onToSearchPage(View v)
+	public void onWelcPageToSrchPage(View v)
 	{
 		Toast.makeText(this, "Clicked Button launch SearchActivity", Toast.LENGTH_SHORT).show();
-		Intent iToSearchPage2 = new Intent(getBaseContext(), SearchActivity.class);
-		startActivity(iToSearchPage2);
+		Intent iBtnWelcPageToSrchPage = new Intent(getBaseContext(), SearchActivity.class);
+		startActivity(iBtnWelcPageToSrchPage);
 	}
 	
-	public void onToCategoryPage(View v)
+	public void onWelcPageToCatPage(View v)
 	{
 		Toast.makeText(this, "Clicked Button launch CategoryActivity", Toast.LENGTH_SHORT).show();
-		Intent iToCategoryPage2 = new Intent(getBaseContext(), CategoryActivity.class);
-		startActivity(iToCategoryPage2);
+		Intent iBtnWelcPageToCatPage = new Intent(getBaseContext(), CategoryActivity.class);
+		startActivity(iBtnWelcPageToCatPage);
 	}
 }

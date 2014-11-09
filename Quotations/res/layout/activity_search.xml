@@ -41,21 +41,33 @@
         android:text="@string/search_result" />
 
     <ListView
-        android:id="@+id/lvQuote"
+        android:id="@+id/lvMatchedQuote"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnSrchPageToWelcPage"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/tvSearchResult" >
+
     </ListView>
     
     <Button
-        android:id="@+id/btnToWelcomePage"
+        android:id="@+id/btnSrchPageToWelcPage"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:text="@string/button_to_welcome_page"
-        android:onClick="onToWelcomePage" />
+        android:onClick="onSrchPageToWelcPage" />
+
+    <Button
+        android:id="@+id/btnSrchPageToCatPage"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/btnSrchPageToWelcPage"
+        android:text="@string/button_to_category_page"
+        android:onClick="onSrchPageToCatPage" />
 
 </RelativeLayout>

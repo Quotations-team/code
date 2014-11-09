@@ -17,29 +17,29 @@
         android:id="@+id/lvRandomQuote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btnToSearchPage"
+        android:layout_above="@+id/btnWelcPageToSrchPage"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/tvRandomQuoteLabel" >
     </ListView>
 
     <Button
-        android:id="@+id/btnToSearchPage"
+        android:id="@+id/btnWelcPageToSrchPage"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:text="@string/button_to_search_page"
-        android:onClick="onToSearchPage" />
+        android:onClick="onWelcPageToSrchPage" />
 
     <Button
-        android:id="@+id/btnToCategoryPage"
+        android:id="@+id/btnWelcPageToCatPage"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/btnToSearchPage"
+        android:layout_toRightOf="@+id/btnWelcPageToSrchPage"
         android:text="@string/button_to_category_page"
-        android:onClick="onToCategoryPage" />
+        android:onClick="onWelcPageToCatPage" />
 
 </RelativeLayout>

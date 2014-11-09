@@ -5,19 +5,39 @@
     tools:context="${relativePackage}.${activityClass}" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tvSelectedCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:text="@string/text_selected_category" />
 
     <Button
-        android:id="@+id/btnToWelcomePage2"
+        android:id="@+id/btnCatPageToWelcPage"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:onClick="onToWelcomePage"
+        android:onClick="onCatPageToWelcPage"
         android:text="@string/button_to_welcome_page" />
+
+    <Button
+        android:id="@+id/btnCatPageToSrchPage"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/btnCatPageToWelcPage"
+        android:text="@string/button_to_search_page"
+        android:onClick="onCatPageToSrchPage" />
+
+    <ListView
+        android:id="@+id/lvMatchedCatQuote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnCatPageToWelcPage"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tvSelectedCategory" >
+
+    </ListView>
 
 </RelativeLayout>

@@ -8,11 +8,26 @@
     <string name="app_name">Quotation</string>
     <string name="title_activity_welcome">WelcomeActivity</string>
     <string name="random_quote_label">Random Quotes</string>
+    
     <string name="button_to_search_page">To Search Page</string>
     <string name="button_to_category_page">To Category Page</string>
     <string name="button_to_welcome_page">To Welcome Page</string>
+    
     <string name="menu_item_to_search_page">To Search Page</string>
     <string name="menu_item_to_category_page">To Category Page</string>
+    <string name="menu_item_to_welcome_page">To Welcome Page</string>
+    
+    <string name="menu_item_to_sub_category_page">To Sub Category Page</string>
+    <string name="submenu_item_computer">computer</string>
+    <string name="submenu_item_family">family</string>
+    <string name="submenu_item_food">food</string>
+    <string name="submenu_item_funny">funny</string>
+    <string name="submenu_item_inspirational">inspirational</string>
+    <string name="submenu_item_motivational">motivational</string>
+    <string name="submenu_item_music">music</string>
+    <string name="submenu_item_positive">positive</string>
+    <string name="submenu_item_smile">smile</string>
+    <string name="submenu_item_wisdom">wisdom</string>
 
     <string-array name="categories_array">
         <item>computer</item>
@@ -28,7 +43,7 @@
     </string-array>
 
     <string name="title_activity_search">SearchActivity</string>
-    <string name="hello_world">Hello world!</string>
     <string name="title_activity_category">CategoryActivity</string>
+    <string name="text_selected_category">selected none</string>
 
 </resources>
