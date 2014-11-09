@@ -1,22 +1,31 @@
-package com.parse.starter;
+package com.example.quotations;
 
 import android.app.Application;
+import android.content.Intent;
 
 import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+import com.parse.starter.QuotationTable;
 
-public class ParseApplication extends Application
+public class QuotationsApplication extends Application
 {
-	//my ID and Key are from https://www.parse.com/apps/quickstart?onboard=#parse_data/mobile/android/native/new
 	private static final String YOUR_APPLICATION_ID = "T7ERQGdeM8rlb00GTt0up3ioa5JQQmOLafINESSa";
 	private static final String YOUR_CLIENT_KEY = "qqbo4C2Fw6EqYOWIs5yLN6zevLJQ2xMLyIzS23Ek";
+	
+	
 	@Override
 	public void onCreate()
 	{
 		super.onCreate();
 
+		initParse();
+		
+	}
+	
+	private void initParse()
+	{
 		//register your subclass of ParseObject here, before initialize the app
 		ParseObject.registerSubclass(QuotationTable.class);
 		
