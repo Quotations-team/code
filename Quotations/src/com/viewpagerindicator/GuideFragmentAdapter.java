@@ -1,15 +1,14 @@
 package com.viewpagerindicator;
 
-import android.R;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.example.quotations.R;
+
 public class GuideFragmentAdapter extends FragmentPagerAdapter implements IconPagerAdapter {
-    protected static final String[] CONTENT = new String[] { "This", "Is", "A", "Test", };
 
-
-    private int mCount = CONTENT.length;
+    private int mCount = 3;
 
     public GuideFragmentAdapter(FragmentManager fm) {
         super(fm);
@@ -17,7 +16,12 @@ public class GuideFragmentAdapter extends FragmentPagerAdapter implements IconPa
 
     @Override
     public Fragment getItem(int position) {
-        return GuideFragment.newInstance(CONTENT[position % CONTENT.length]);
+        if(position == 0)
+            return GuideFragment.newInstance(R.layout.guide1, false);
+        else if(position == 1)
+            return GuideFragment.newInstance(R.layout.guide2, false);
+        else
+            return GuideFragment.newInstance(R.layout.guide3, false);
     }
 
     @Override
@@ -27,12 +31,12 @@ public class GuideFragmentAdapter extends FragmentPagerAdapter implements IconPa
 
     @Override
     public CharSequence getPageTitle(int position) {
-      return GuideFragmentAdapter.CONTENT[position % CONTENT.length];
+    	return "Title";
     }
 
     @Override
     public int getIconResId(int index) {
-      return 0;
+    	return 0;
     }
 
     public void setCount(int count) {

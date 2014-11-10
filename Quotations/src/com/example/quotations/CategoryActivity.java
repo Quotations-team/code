@@ -3,8 +3,6 @@ package com.example.quotations;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.quotations.R;
-import com.example.quotations.R.layout;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -17,7 +15,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;

@@ -12,29 +12,28 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".QuotationsApplication"
+        android:name="com.example.quotations.QuotationsApplication"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name=".WelcomeActivity"
-            android:label="@string/title_activity_welcome" >
+            android:name="com.example.quotations.SplashActivity"
+            android:label="@string/title_activity_guide">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".SearchActivity"
+            android:name="com.example.quotations.WelcomeActivity"
+            android:label="@string/title_activity_welcome" >
+        </activity>
+        <activity
+            android:name="com.example.quotations.SearchActivity"
             android:label="@string/title_activity_search" >
         </activity>
         <activity
-            android:name=".CategoryActivity"
+            android:name="com.example.quotations.CategoryActivity"
             android:label="@string/title_activity_category" >
-        </activity>
-        <activity
-            android:name=".GuideActivity"
-            android:label="@string/title_activity_guide" >
         </activity>
     </application>
 

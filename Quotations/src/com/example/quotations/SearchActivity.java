@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.quotations.R;
-import com.example.quotations.R.layout;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -46,33 +45,27 @@ public class SearchActivity extends Activity
 		currentQuote = "";
 	}
 	
-	public void queryData()
-	{
-		ParseQuery<QuotationTable> query = ParseQuery.getQuery("QuotationTable");
-		query.orderByAscending("ID");
-		query.findInBackground(new FindCallback<QuotationTable>()
-		{
-			@Override
-			public void done(List<QuotationTable> quotations, ParseException e)
-			{
-				if (e != null)
-				{
-					Toast.makeText(getBaseContext(), "Error: " + e, Toast.LENGTH_SHORT).show();
-				}
-				else
-				{
-					for(QuotationTable quotation : quotations)
-					{
-						QuotationTable newQuote = new QuotationTable();
-						newQuote.setID(quotation.getID());
-						newQuote.setCategory(quotation.getCategory());
-						newQuote.setQuote(quotation.getQuote());
-						wholeQuotationTable.add(newQuote);
-					}
-				}
-			}
-		});
-	}
+	public void queryData() {
+          ParseQuery<QuotationTable> query = ParseQuery.getQuery("QuotationTable");
+          query.orderByAscending("ID");
+          query.findInBackground(new FindCallback<QuotationTable>() {
+              @Override
+              public void done(List<QuotationTable> quotations, ParseException e) {
+                  if (e != null) {
+                      Toast.makeText(getBaseContext(), "Error: " + e, Toast.LENGTH_SHORT).show();
+                  } else {
+                      for (QuotationTable quotation : quotations) {
+                          QuotationTable newQuote = new QuotationTable();
+                          newQuote.setID(quotation.getID());
+                          newQuote.setCategory(quotation.getCategory());
+                          newQuote.setQuote(quotation.getQuote());
+                          wholeQuotationTable.add(newQuote);
+                      }
+                  }
+              }
+          });
+      }
+
 
 	public void onSearchButtonClicked(View v)
 	{

@@ -2,44 +2,36 @@ package com.viewpagerindicator;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.LinearLayout.LayoutParams;
 
 
 public final class GuideFragment extends Fragment {
-    private static final String KEY_CONTENT = "TestFragment:Content";
+    private static final String KEY_CONTENT = "GuideFragment:Content";
 
-    public static GuideFragment newInstance(String content) {
+    public static GuideFragment newInstance(int resourceId, boolean isLastPage) {
         GuideFragment fragment = new GuideFragment();
-
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < 20; i++) {
-            builder.append(content).append(" ");
-        }
-        builder.deleteCharAt(builder.length() - 1);
-        fragment.mContent = builder.toString();
+        
+        fragment.mResourceId = resourceId;
 
         return fragment;
     }
 
-    private String mContent = "???";
+    private int mResourceId = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         if ((savedInstanceState != null) && savedInstanceState.containsKey(KEY_CONTENT)) {
-            mContent = savedInstanceState.getString(KEY_CONTENT);
+        	mResourceId = savedInstanceState.getInt(KEY_CONTENT);
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        /*
         TextView text = new TextView(getActivity());
         text.setGravity(Gravity.CENTER);
         text.setText(mContent);
@@ -50,13 +42,16 @@ public final class GuideFragment extends Fragment {
         layout.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
         layout.setGravity(Gravity.CENTER);
         layout.addView(text);
-
         return layout;
+        */
+        
+        // Inflate the layout for this fragment
+        return inflater.inflate(mResourceId, container, false);
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString(KEY_CONTENT, mContent);
+        outState.putInt(KEY_CONTENT, mResourceId);
     }
 }

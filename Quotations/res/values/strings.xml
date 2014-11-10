@@ -45,6 +45,9 @@
     <string name="title_activity_search">SearchActivity</string>
     <string name="title_activity_category">CategoryActivity</string>
     <string name="text_selected_category">selected none</string>
-    <string name="title_activity_guide"></string>
+    <string name="title_activity_guide">Quotations</string>
+    <string name="skip">Skip</string>
+    <string name="endGuide">Got it!</string>
+
 
 </resources>

@@ -3,8 +3,12 @@ package com.example.quotations;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.parse.*;
-import com.parse.starter.QuotationTable;
+import com.example.quotations.R;
+import com.parse.FindCallback;
+import com.parse.ParseAnalytics;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+import com.parse.starter.*;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -32,27 +36,15 @@ public class WelcomeActivity extends Activity
 	int rQuote1, rQuote2, rQuote3;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_welcome);
-		
-		SharedPreferences wmbPreference = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean isFirstRun = wmbPreference.getBoolean("FirstRun", true);
-        
-		if(isFirstRun)
-		{
-			Intent intent = new Intent(getBaseContext(), GuideActivity.class);
-	        startActivity(intent);
-		}
-		else
-		{
-			ParseAnalytics.trackAppOpenedInBackground(getIntent());
-			init();
-			queryData();
-		}
-	}
-	
+	protected void onCreate(Bundle savedInstanceState) {
+          super.onCreate(savedInstanceState);
+          setContentView(R.layout.activity_welcome);
+
+          ParseAnalytics.trackAppOpenedInBackground(getIntent());
+          init();
+          queryData();
+      }
+
 	public void init()
 	{
 		wholeQuotationTable = new ArrayList<QuotationTable>();
