@@ -4,35 +4,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="${relativePackage}.${activityClass}" >
-    
+
     <ListView
         android:id="@+id/lvRandomQuote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btnHomePageToSrchPage"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/tvRandomQuoteLabel" >
     </ListView>
-
-    <Button
-        android:id="@+id/btnHomePageToSrchPage"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:text="@string/button_to_search_page"
-        android:onClick="onHomePageToSrchPage" />
-
-    <Button
-        android:id="@+id/btnHomePageToCatPage"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/btnHomePageToSrchPage"
-        android:text="@string/button_to_category_page"
-        android:onClick="onHomePageToCatPage" />
 
     <ImageView
         android:id="@+id/imageView1"
@@ -40,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/icon144" />
+        android:src="@drawable/icon" />
 
     <TextView
         android:id="@+id/tvRandomQuoteLabel"
