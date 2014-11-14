@@ -8,7 +8,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:scaleType="fitXY"
-        android:src="@drawable/guide_sample2"
+        android:src="@drawable/splash"
     	android:padding="0dp" />
 
 </FrameLayout>

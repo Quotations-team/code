@@ -4,21 +4,31 @@
     android:layout_height="match_parent"
     tools:context="${relativePackage}.${activityClass}" >
 
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/icon144" />
+    
     <TextView
         android:id="@+id/tvSelectedCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView1"
+        android:layout_centerHorizontal="true"
         android:text="@string/text_selected_category" />
 
     <Button
-        android:id="@+id/btnCatPageToWelcPage"
+        android:id="@+id/btnCatPageToHomePage"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:onClick="onCatPageToWelcPage"
-        android:text="@string/button_to_welcome_page" />
+        android:onClick="onCatPageToHomePage"
+        android:text="@string/button_to_home_page" />
 
     <Button
         android:id="@+id/btnCatPageToSrchPage"
@@ -26,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/btnCatPageToWelcPage"
+        android:layout_toRightOf="@+id/btnCatPageToHomePage"
         android:text="@string/button_to_search_page"
         android:onClick="onCatPageToSrchPage" />
 
@@ -34,7 +44,7 @@
         android:id="@+id/lvMatchedCatQuote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btnCatPageToWelcPage"
+        android:layout_above="@+id/btnCatPageToHomePage"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/tvSelectedCategory" >
 

@@ -5,12 +5,20 @@
     android:orientation="vertical"
     tools:context="${relativePackage}.${activityClass}" >
 
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/icon144" />
+    
     <TextView
         android:id="@+id/tvSearchInstruction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/imageView1"
+        android:layout_centerHorizontal="true"
         android:text="@string/search_instruction" />
 
     <EditText
@@ -44,21 +52,21 @@
         android:id="@+id/lvMatchedQuote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btnSrchPageToWelcPage"
+        android:layout_above="@+id/btnSrchPageToHomePage"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/tvSearchResult" >
 
     </ListView>
     
     <Button
-        android:id="@+id/btnSrchPageToWelcPage"
+        android:id="@+id/btnSrchPageToHomePage"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:text="@string/button_to_welcome_page"
-        android:onClick="onSrchPageToWelcPage" />
+        android:text="@string/button_to_home_page"
+        android:onClick="onSrchPageToHomePage" />
 
     <Button
         android:id="@+id/btnSrchPageToCatPage"
@@ -66,7 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/btnSrchPageToWelcPage"
+        android:layout_toRightOf="@+id/btnSrchPageToHomePage"
         android:text="@string/button_to_category_page"
         android:onClick="onSrchPageToCatPage" />
 

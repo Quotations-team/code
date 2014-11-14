@@ -92,7 +92,7 @@ public class SplashActivity extends FragmentActivity {
                 public void run() {
                     // This method will be executed once the timer is over
                     // Start the app main activity
-                    Intent i = new Intent(getBaseContext(), WelcomeActivity.class);
+                    Intent i = new Intent(getBaseContext(), HomeActivity.class);
                     startActivity(i);
 
                     finish();
@@ -106,7 +106,7 @@ public class SplashActivity extends FragmentActivity {
         editor.putBoolean("FirstRun", false);
         editor.commit();
 
-        Intent i = new Intent(getBaseContext(), WelcomeActivity.class);
+        Intent i = new Intent(getBaseContext(), HomeActivity.class);
         startActivity(i);
         finish();
     }

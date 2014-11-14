@@ -94,10 +94,10 @@ public class SearchActivity extends Activity
 		// as you specify a parent activity in AndroidManifest.xml.
 		switch (item.getItemId())
 		{
-			case R.id.miSrchPageToWelcPage:
-				Toast.makeText(this, "Clicked Menu item launch WelcomeActivity", Toast.LENGTH_SHORT).show();
-				Intent iMenuSrchPageToWelcPage = new Intent(getBaseContext(), WelcomeActivity.class);
-				startActivity(iMenuSrchPageToWelcPage);
+			case R.id.miSrchPageToHomePage:
+				Toast.makeText(this, "Clicked Menu item launch HomeActivity", Toast.LENGTH_SHORT).show();
+				Intent iMenuSrchPageToHomePage = new Intent(getBaseContext(), HomeActivity.class);
+				startActivity(iMenuSrchPageToHomePage);
 				break;
 			case R.id.miSrchPageToCatPage:
 				Toast.makeText(this, "Clicked Menu item launch CategoryActivity", Toast.LENGTH_SHORT).show();
@@ -118,11 +118,11 @@ public class SearchActivity extends Activity
 	    return true;
 	}
 	
-	public void onSrchPageToWelcPage(View v)
+	public void onSrchPageToHomePage(View v)
 	{
-		Toast.makeText(this, "Clicked Button launch WelcomeActivity", Toast.LENGTH_SHORT).show();
-		Intent iBtnSrchPageToWelcPage = new Intent(getBaseContext(), WelcomeActivity.class);
-		startActivity(iBtnSrchPageToWelcPage);
+		Toast.makeText(this, "Clicked Button launch HomeActivity", Toast.LENGTH_SHORT).show();
+		Intent iBtnSrchPageToHomePage = new Intent(getBaseContext(), HomeActivity.class);
+		startActivity(iBtnSrchPageToHomePage);
 	}
 	
 	public void onSrchPageToCatPage(View v)

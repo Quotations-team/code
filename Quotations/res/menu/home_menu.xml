@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    
-    <item
-	    android:id="@+id/miSrchPageToHomePage"
+	
+	<item
+	    android:id="@+id/miHomePageToSrchPage"
         android:orderInCategory="101"
-        android:title="@string/menu_item_to_home_page" >
+        android:title="@string/menu_item_to_search_page" >
 	</item>
 	
 	<item
-	    android:id="@+id/miSrchPageToCatPage"
+	    android:id="@+id/miHomePageToCatPage"
         android:orderInCategory="102"
         android:title="@string/menu_item_to_category_page" >
 	</item>
-
+	
 </menu>

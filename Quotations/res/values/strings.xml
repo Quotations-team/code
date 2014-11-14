@@ -6,16 +6,16 @@
     <string name="search_button">Search</string>
     <string name="search_result">Result</string>
     <string name="app_name">Quotation</string>
-    <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="title_activity_home">homeActivity</string>
     <string name="random_quote_label">Random Quotes</string>
     
     <string name="button_to_search_page">To Search Page</string>
     <string name="button_to_category_page">To Category Page</string>
-    <string name="button_to_welcome_page">To Welcome Page</string>
+    <string name="button_to_home_page">To Home Page</string>
     
     <string name="menu_item_to_search_page">To Search Page</string>
     <string name="menu_item_to_category_page">To Category Page</string>
-    <string name="menu_item_to_welcome_page">To Welcome Page</string>
+    <string name="menu_item_to_home_page">To Home Page</string>
     
     <string name="menu_item_to_sub_category_page">To Sub Category Page</string>
     <string name="submenu_item_computer">computer</string>

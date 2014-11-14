@@ -24,6 +24,8 @@ public class CategoryActivity extends Activity
 	TextView tvSelectedCategory;
 	List<QuotationTable> wholeQuotationTable, matchedCategoryQuotationTable;
 	String strSelectedCategory, currentCategory;
+	ListView listView;
+	ArrayAdapter<QuotationTable> arrayAdapter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -51,6 +53,8 @@ public class CategoryActivity extends Activity
 		matchedCategoryQuotationTable = new ArrayList<QuotationTable>();
 		strSelectedCategory = "";
 		currentCategory = "";
+		
+		listView = (ListView) findViewById(R.id.lvMatchedCatQuote);
 	}
 	
 	public void queryData()
@@ -94,9 +98,7 @@ public class CategoryActivity extends Activity
 				matchedCategoryQuotationTable.add(wholeQuotationTable.get(i));
 			}
 		}
-
-		ListView listView = (ListView) findViewById(R.id.lvMatchedCatQuote);
-		ArrayAdapter<QuotationTable> arrayAdapter = new ArrayAdapter<QuotationTable>(getBaseContext(), android.R.layout.simple_list_item_1, matchedCategoryQuotationTable);
+		arrayAdapter = new ArrayAdapter<QuotationTable>(getBaseContext(), android.R.layout.simple_list_item_1, matchedCategoryQuotationTable);
 		listView.setAdapter(arrayAdapter);
 	}
 	
@@ -108,15 +110,75 @@ public class CategoryActivity extends Activity
 		// as you specify a parent activity in AndroidManifest.xml.
 		switch (item.getItemId())
 		{
-			case R.id.miCatPageToWelcPage:
-				Toast.makeText(this, "Clicked Menu item launch WelcomeActivity", Toast.LENGTH_SHORT).show();
-				Intent iMenuCatPageToWelcPage = new Intent(getBaseContext(), WelcomeActivity.class);
-				startActivity(iMenuCatPageToWelcPage);
+			case R.id.miCatPageToHomePage:
+				Toast.makeText(this, "Clicked Menu item launch HomeActivity", Toast.LENGTH_SHORT).show();
+				Intent iMenuCatPageToHomePage = new Intent(getBaseContext(), HomeActivity.class);
+				startActivity(iMenuCatPageToHomePage);
 				break;
 			case R.id.miCatPageToSrchPage:
 				Toast.makeText(this, "Clicked Menu item launch SearchActivity", Toast.LENGTH_SHORT).show();
 				Intent iMenuCatPageToSrchPage = new Intent(getBaseContext(), SearchActivity.class);
 				startActivity(iMenuCatPageToSrchPage);
+				break;
+			case R.id.miSubCat_computer:
+				Toast.makeText(this, "Clicked Sub Menu item launch CategoryActivity", Toast.LENGTH_SHORT).show();
+				strSelectedCategory = "computer";
+				arrayAdapter.clear();
+				displayMatchedCategoryQuote();
+				break;
+			case R.id.miSubCat_family:
+				Toast.makeText(this, "Clicked Sub Menu item family", Toast.LENGTH_SHORT).show();
+				strSelectedCategory = "family";
+				arrayAdapter.clear();
+				displayMatchedCategoryQuote();
+				break;
+			case R.id.miSubCat_food:
+				Toast.makeText(this, "Clicked Sub Menu item food", Toast.LENGTH_SHORT).show();
+				strSelectedCategory = "food";
+				arrayAdapter.clear();
+				displayMatchedCategoryQuote();
+				break;
+			case R.id.miSubCat_funny:
+				Toast.makeText(this, "Clicked Sub Menu item funny", Toast.LENGTH_SHORT).show();
+				strSelectedCategory = "funny";
+				arrayAdapter.clear();
+				displayMatchedCategoryQuote();
+				break;
+			case R.id.miSubCat_inspirational:
+				Toast.makeText(this, "Clicked Sub Menu item inspirational", Toast.LENGTH_SHORT).show();
+				strSelectedCategory = "inspirational";
+				arrayAdapter.clear();
+				displayMatchedCategoryQuote();
+				break;
+			case R.id.miSubCat_motivational:
+				Toast.makeText(this, "Clicked Sub Menu item motivational", Toast.LENGTH_SHORT).show();
+				strSelectedCategory = "motivational";
+				arrayAdapter.clear();
+				displayMatchedCategoryQuote();
+				break;
+			case R.id.miSubCat_music:
+				Toast.makeText(this, "Clicked Sub Menu item music", Toast.LENGTH_SHORT).show();
+				strSelectedCategory = "music";
+				arrayAdapter.clear();
+				displayMatchedCategoryQuote();
+				break;
+			case R.id.miSubCat_positive:
+				Toast.makeText(this, "Clicked Sub Menu item positive", Toast.LENGTH_SHORT).show();
+				strSelectedCategory = "positive";
+				arrayAdapter.clear();
+				displayMatchedCategoryQuote();
+				break;
+			case R.id.miSubCat_smile:
+				Toast.makeText(this, "Clicked Sub Menu item smile", Toast.LENGTH_SHORT).show();
+				strSelectedCategory = "smile";
+				arrayAdapter.clear();
+				displayMatchedCategoryQuote();
+				break;
+			case R.id.miSubCat_wisdom:
+				Toast.makeText(this, "Clicked Sub Menu item wisdom", Toast.LENGTH_SHORT).show();
+				strSelectedCategory = "wisdom";
+				arrayAdapter.clear();
+				displayMatchedCategoryQuote();
 				break;
 			default:
 				break;
@@ -132,11 +194,11 @@ public class CategoryActivity extends Activity
 	    return true;
 	}
 	
-	public void onCatPageToWelcPage(View v)
+	public void onCatPageToHomePage(View v)
 	{
-		Toast.makeText(this, "Clicked Button launch WelcomeActivity", Toast.LENGTH_SHORT).show();
-		Intent iBtnCatPageToWelcPage = new Intent(getBaseContext(), WelcomeActivity.class);
-		startActivity(iBtnCatPageToWelcPage);
+		Toast.makeText(this, "Clicked Button launch HomeActivity", Toast.LENGTH_SHORT).show();
+		Intent iBtnCatPageToHomePage = new Intent(getBaseContext(), HomeActivity.class);
+		startActivity(iBtnCatPageToHomePage);
 	}
 	
 	public void onCatPageToSrchPage(View v)
