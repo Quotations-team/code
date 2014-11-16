@@ -6,7 +6,7 @@ import java.util.List;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
-import com.parse.starter.QuotationTable;
+import com.parse.starter.Quotation;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -22,10 +22,10 @@ import android.widget.Toast;
 public class CategoryActivity extends Activity
 {
 	TextView tvSelectedCategory;
-	List<QuotationTable> wholeQuotationTable, matchedCategoryQuotationTable;
+	List<Quotation> wholeQuotationTable, matchedCategoryQuotationTable;
 	String strSelectedCategory, currentCategory;
 	ListView listView;
-	ArrayAdapter<QuotationTable> arrayAdapter;
+	ArrayAdapter<Quotation> arrayAdapter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -49,8 +49,8 @@ public class CategoryActivity extends Activity
 	
 	public void init()
 	{
-		wholeQuotationTable = new ArrayList<QuotationTable>();
-		matchedCategoryQuotationTable = new ArrayList<QuotationTable>();
+		wholeQuotationTable = new ArrayList<Quotation>();
+		matchedCategoryQuotationTable = new ArrayList<Quotation>();
 		strSelectedCategory = "";
 		currentCategory = "";
 		
@@ -59,12 +59,12 @@ public class CategoryActivity extends Activity
 	
 	public void queryData()
 	{
-		ParseQuery<QuotationTable> query = ParseQuery.getQuery("QuotationTable");
+		ParseQuery<Quotation> query = ParseQuery.getQuery("Quotation");
 		query.orderByAscending("ID");
-		query.findInBackground(new FindCallback<QuotationTable>()
+		query.findInBackground(new FindCallback<Quotation>()
 		{
 			@Override
-			public void done(List<QuotationTable> quotations, ParseException e)
+			public void done(List<Quotation> quotations, ParseException e)
 			{
 				if (e != null)
 				{
@@ -72,17 +72,18 @@ public class CategoryActivity extends Activity
 				}
 				else
 				{
-					for(QuotationTable quotation : quotations)
+					/*
+					for(Quotation q : quotations)
 					{
-						QuotationTable newQuote = new QuotationTable();
-						newQuote.setID(quotation.getID());
-						newQuote.setCategory(quotation.getCategory());
-						newQuote.setQuote(quotation.getQuote());
+                                  Quotation newQuote = new Quotation();
+						newQuote.setCategory(q.getCategory());
+						newQuote.setQuote(q.getQuote());
 						wholeQuotationTable.add(newQuote);
 					}
 					//need to call it here, wait for fetch data,
 					//if later on stored data on phone, can call it somewhere else
 					displayMatchedCategoryQuote();
+					*/
 				}
 			}
 		});
@@ -98,7 +99,7 @@ public class CategoryActivity extends Activity
 				matchedCategoryQuotationTable.add(wholeQuotationTable.get(i));
 			}
 		}
-		arrayAdapter = new ArrayAdapter<QuotationTable>(getBaseContext(), android.R.layout.simple_list_item_1, matchedCategoryQuotationTable);
+		arrayAdapter = new ArrayAdapter<Quotation>(getBaseContext(), android.R.layout.simple_list_item_1, matchedCategoryQuotationTable);
 		listView.setAdapter(arrayAdapter);
 	}
 	

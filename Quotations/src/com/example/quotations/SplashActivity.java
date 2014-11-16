@@ -22,7 +22,7 @@ import android.widget.TextView;
 
 public class SplashActivity extends FragmentActivity {
     // Splash screen timer
-    private static int SPLASH_TIME_OUT = 3000;
+    private static int SPLASH_TIME_OUT = 2000;
     SharedPreferences wmbPreference;
     CirclePageIndicator circlePageIndicator;
 
@@ -85,9 +85,6 @@ public class SplashActivity extends FragmentActivity {
             setContentView(R.layout.splash_screen);
 
             new Handler().postDelayed(new Runnable() {
-                /*
-                 * Showing splash screen with a timer.
-                */
                 @Override
                 public void run() {
                     // This method will be executed once the timer is over

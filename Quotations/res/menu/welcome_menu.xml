@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+	
+	<item
+	    android:id="@+id/miWelcPageToSrchPage"
+        android:orderInCategory="101"
+        android:title="@string/menu_item_to_search_page" >
+	</item>
+	
+	<item
+	    android:id="@+id/miWelcPageToCatPage"
+        android:orderInCategory="102"
+        android:title="@string/menu_item_to_category_page" >
+	</item>
+	
+	<item
+	    android:id="@+id/miWelcPageToSubCatPage"
+        android:orderInCategory="103"
+        android:title="@string/menu_item_to_sub_category_page" >
+        
+		<menu>
+			<item android:id="@+id/miSubCat_computer" android:title="@string/submenu_item_computer"></item>
+			<item android:id="@+id/miSubCat_family" android:title="@string/submenu_item_family"></item>
+			<item android:id="@+id/miSubCat_food" android:title="@string/submenu_item_food"></item>
+			<item android:id="@+id/miSubCat_funny" android:title="@string/submenu_item_funny"></item>
+			<item android:id="@+id/miSubCat_inspirational" android:title="@string/submenu_item_inspirational"></item>
+			<item android:id="@+id/miSubCat_motivational" android:title="@string/submenu_item_motivational"></item>
+			<item android:id="@+id/miSubCat_music" android:title="@string/submenu_item_music"></item>
+			<item android:id="@+id/miSubCat_positive" android:title="@string/submenu_item_positive"></item>
+			<item android:id="@+id/miSubCat_smile" android:title="@string/submenu_item_smile"></item>
+			<item android:id="@+id/miSubCat_wisdom" android:title="@string/submenu_item_wisdom"></item>
+		</menu>
+	</item>
+
+</menu>
