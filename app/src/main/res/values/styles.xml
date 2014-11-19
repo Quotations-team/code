@@ -1,0 +1,11 @@
+<resources>
+
+    <style name="Theme.SplashScreen" parent="@android:style/Theme.Holo.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
+
+    <style name="AppThemeNoBar">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+</resources>
