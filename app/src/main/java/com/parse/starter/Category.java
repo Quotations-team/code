@@ -10,17 +10,17 @@ public class Category extends ParseObject {
     }
 
     public String getCategory() {
-        return getString("Category");
+        return getString("CategoryName");
     }
 
     public void setCategory(String category) {
-        put("Category", category);
+        put("CategoryName", category);
     }
 
 
     @Override
     public String toString() {
-        return "Quote # ";
+        return getString("CategoryName");
     }
 
 }

@@ -47,7 +47,8 @@ public class ListViewCategoryAdapter extends BaseAdapter {
 
         TextView category = (TextView) vi.findViewById(R.id.categoryName);
 
-        category.setText(data.get(position).getCategory());
+        String txt = data.get(position).getCategory().toString();
+        category.setText(txt);
 
         return vi;
     }
