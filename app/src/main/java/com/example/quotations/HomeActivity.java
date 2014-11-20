@@ -38,6 +38,7 @@ public class HomeActivity extends Activity {
     private List<Quotation> quotations;
     private List<Category> categories;
 
+
     private ListView listView;
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;

@@ -38,13 +38,6 @@
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
-        <activity
-            android:name="com.example.quotations.CategoryActivity"
-            android:label="@string/title_activity_category"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait">
-        </activity>
     </application>
 
 </manifest>
