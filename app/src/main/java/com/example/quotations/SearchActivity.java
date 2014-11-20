@@ -99,14 +99,7 @@ public class SearchActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
             case R.id.miSrchPageToHomePage:
-                Toast.makeText(this, "Clicked Menu item launch HomeActivity", Toast.LENGTH_SHORT).show();
-                Intent iMenuSrchPageToHomePage = new Intent(getBaseContext(), HomeActivity.class);
-                startActivity(iMenuSrchPageToHomePage);
-                break;
-            case R.id.miSrchPageToCatPage:
-                Toast.makeText(this, "Clicked Menu item launch CategoryActivity", Toast.LENGTH_SHORT).show();
-                Intent iMenuSrchPageToCatPage = new Intent(getBaseContext(), CategoryActivity.class);
-                startActivity(iMenuSrchPageToCatPage);
+                finish();
                 break;
             default:
                 break;
