@@ -1,15 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
+    <!--<item
         android:id="@+id/action_search"
         android:icon="@drawable/ic_action_search_light"
         android:title="@string/button_to_search_page"
         app:showAsAction="always"
         android:showAsAction="always"/>
+
     <item
         android:id="@+id/action_category"
         android:icon="@drawable/ic_action_category_light"
         android:title="@string/menu_item_to_category_page"
         app:showAsAction="always"
         android:showAsAction="always"/>
+
+    <item android:id="@+id/search"
+          android:title="@string/search_hint"
+          android:icon="@drawable/ic_action_search_light"
+          android:showAsAction="collapseActionView|ifRoom"
+          android:actionViewClass="android.widget.SearchView" />
+          -->
+        <item android:id="@+id/action_search"
+              android:title="@string/search_hint"
+              android:icon="@drawable/ic_action_search_light"
+              app:showAsAction="ifRoom"
+              android:showAsAction="ifRoom"
+                android:actionViewClass="android.widget.SearchView" />
 </menu>

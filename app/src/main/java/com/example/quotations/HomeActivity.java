@@ -12,6 +12,8 @@ import com.parse.starter.Quotation;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -25,6 +27,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 /*
  * this Activity is called by splash screen.
@@ -32,6 +35,7 @@ import android.widget.ListView;
 public class HomeActivity extends Activity {
     private final int remoteQueryRowsLimit = 50;
     private final int localStorageMaxRows = 200;
+    String searchTerm = null;
 
     private ListviewAdapter adapter;
     private ListViewCategoryAdapter categoryAdapter;
@@ -48,6 +52,7 @@ public class HomeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        handleIntent(getIntent());
 
         quotations = new ArrayList<Quotation>();
 
@@ -107,10 +112,28 @@ public class HomeActivity extends Activity {
         listView.setOnScrollListener(new EndlessScrollListener() {
             @Override
             public void onLoadMore(int page, int totalItemsCount) {
-                loadQuotes(getCategoryFilter(), null, page);
+                loadQuotes(getCategoryFilter(), searchTerm, page);
             }
         });
-        loadQuotes(null, null, 1);
+        loadQuotes(getCategoryFilter(), searchTerm, 1);
+    }
+
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        handleIntent(intent);
+    }
+
+    private void handleIntent(Intent intent) {
+
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+
+            searchTerm = query;
+
+            loadQuotes(getCategoryFilter(), searchTerm, 1);
+            findViewById(R.id.action_search).clearFocus();
+        }
     }
 
     private void loadQuotes(List<String> categories, String searchTerm, final int page) {
@@ -217,12 +240,13 @@ public class HomeActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         // Pass the event to ActionBarDrawerToggle, if it returns
         // true, then it has handled the app icon touch event
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-        Intent i;
+        /*Intent i;
         switch (item.getItemId()) {
             case R.id.action_search:
                 i = new Intent(getBaseContext(), SearchActivity.class);
@@ -236,15 +260,22 @@ public class HomeActivity extends Activity {
                 break;
             default:
                 break;
-        }
+        }*/
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu items for use in the action bar
         getMenuInflater().inflate(R.menu.home_menu, menu);
-        return super.onCreateOptionsMenu(menu);
+
+        SearchManager searchManager =
+                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView =
+                (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(getComponentName()));
+
+        return true;//super.onCreateOptionsMenu(menu);
     }
 
     @Override

@@ -24,6 +24,7 @@ public class QuotationsApplication extends Application {
         //register your subclass of ParseObject here, before initialize the app
         ParseObject.registerSubclass(Quotation.class);
         ParseObject.registerSubclass(Category.class);
+        ParseObject.registerSubclass(User.class);
 
         Parse.enableLocalDatastore(this);
         // Add your initialization code here

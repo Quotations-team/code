@@ -48,5 +48,30 @@
     <string name="skip">Skip</string>
     <string name="endGuide">Got it!</string>
 
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
+    <!-- variable for sign up page -->
+    <string name="title_activity_signup">SignupActivity</string>
+    <string name="button_go_to_sign_in">To Sign In</string>
+    <string name="button_signup_skip">Skip</string>
+    <string name="button_signup_done">Done</string>
+    <string name="text_email_label">Email: </string>
+    <string name="text_new_user_name_label">New User Name: </string>
+    <string name="text_new_password_label">New Password: </string>
+    <string name="text_confirm_password_label">Confirm Password: </string>
+    <string name="hint_email">abc@yahoo.com</string>
+    <string name="hint_new_user_name">abcuser</string>
+    <string name="hint_new_password">abc123</string>
+    <string name="hint_confirm_password">abc123</string>
+
+    <!-- variable for sign in page -->
+    <string name="title_activity_signin">SigninActivity</string>
+    <string name="button_go_to_sign_up">To Sign Up</string>
+    <string name="button_signin_skip">Skip</string>
+    <string name="button_signin_done">Done</string>
+    <string name="text_user_name_label">User Name: </string>
+    <string name="text_password_label">Password: </string>
+    <string name="hint_user_name">abcuser</string>
+    <string name="hint_password">abc123</string>
 </resources>
