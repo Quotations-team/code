@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -43,15 +44,28 @@ public class ListviewAdapter extends BaseAdapter {
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        View vi = convertView;
-        if (convertView == null)
-            vi = inflater.inflate(R.layout.listview_item, null);
+        View vi = inflater.inflate(R.layout.listview_item, null);
 
-        TextView category = (TextView) vi.findViewById(R.id.quoteItemCategory);
-        TextView quote = (TextView) vi.findViewById(R.id.quoteItemQuote);
+        TextView author = (TextView) vi.findViewById(R.id.quoteAuthor);
+        TextView quote = (TextView) vi.findViewById(R.id.quoteText);
 
-        category.setText(data.get(position).getCategory());
+        LinearLayout thumbnails = (LinearLayout)vi.findViewById(R.id.thumbnails);
+
+        String[] categories = data.get(position).getCategories();
+        for(String category: categories) {
+            ImageView categoryIcon = new ImageView(vi.getContext());
+            int i = vi.getContext().getResources().getIdentifier("drawable/" + category.toLowerCase()
+                    + "_grey", null, vi.getContext().getPackageName());
+            categoryIcon.setImageResource(i);
+
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(60, 60);
+            layoutParams.setMargins(0, 0, 10, 0);
+            categoryIcon.setLayoutParams(layoutParams);
+            thumbnails.addView(categoryIcon);
+        }
+
         quote.setText(data.get(position).getQuote());
+        author.setText("—" + data.get(position).getAuthor());
 
         return vi;
     }

@@ -10,11 +10,12 @@ public class Quotation extends ParseObject {
 
     }
 
-    public String getCategory() {
-        return getString("Category");
+    public String[] getCategories() {
+        String categories = getString("Category").toString();
+        return categories.split(",");
     }
 
-    public void setCategory(String category) {
+    public void setCategories(String category) {
         put("Category", category);
     }
 
@@ -24,6 +25,14 @@ public class Quotation extends ParseObject {
 
     public void setQuote(String quote) {
         put("Quote", quote);
+    }
+
+    public String getAuthor() {
+        return getString("Author");
+    }
+
+    public void setAuthor(String author) {
+        put("Author", author);
     }
 
     @Override

@@ -1,77 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="app_name">Quotation</string>
+    <string name="title_activity_home">Quote Feed</string>
+
+    <!-- Search -->
     <string name="search_instruction">Try searching with different keywords to find the best results.</string>
     <string name="search_hint">Search</string>
     <string name="search_button">Search</string>
     <string name="search_result">Result</string>
-    <string name="app_name">Quotation</string>
-    <string name="title_activity_home">Quote Feed</string>
 
-    <string name="button_to_search_page">Search</string>
-    <string name="button_to_category_page">Category</string>
-    <string name="button_to_home_page">Home</string>
+    <!-- Menu -->
+    <string name="logout">Logout</string>
 
-    <string name="menu_item_to_search_page">Search</string>
-    <string name="menu_item_to_category_page">Category</string>
-    <string name="menu_item_to_home_page">Home</string>
 
-    <string name="menu_item_to_sub_category_page">Sub Category</string>
-    <string name="submenu_item_computer">computer</string>
-    <string name="submenu_item_family">family</string>
-    <string name="submenu_item_food">food</string>
-    <string name="submenu_item_funny">funny</string>
-    <string name="submenu_item_inspirational">inspirational</string>
-    <string name="submenu_item_motivational">motivational</string>
-    <string name="submenu_item_music">music</string>
-    <string name="submenu_item_positive">positive</string>
-    <string name="submenu_item_smile">smile</string>
-    <string name="submenu_item_wisdom">wisdom</string>
-
-    <string-array name="categories_array">
-        <item>computer</item>
-        <item>family</item>
-        <item>food</item>
-        <item>funny</item>
-        <item>inspirational</item>
-        <item>motivational</item>
-        <item>music</item>
-        <item>positive</item>
-        <item>smile</item>
-        <item>wisdom</item>
-    </string-array>
-
-    <string name="title_activity_search"></string>
-    <string name="title_activity_category"></string>
-    <string name="text_selected_category">selected none</string>
     <string name="title_activity_guide">Quotations</string>
     <string name="skip">Skip</string>
     <string name="endGuide">Got it!</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
 
-    <!-- variable for sign up page -->
+    <string name="signin">Signin</string>
+    <string name="signup">Signup</string>
+    <string name="skipSignin">Skip</string>
+
+    <string name="register_detail">Signin to add comment and like quotes or </string>
+    <string name="register_skip">Continue without registration</string>
+    <!-- signup page -->
     <string name="title_activity_signup">SignupActivity</string>
-    <string name="button_go_to_sign_in">To Sign In</string>
+    <string name="button_go_to_sign_in">Signin</string>
     <string name="button_signup_skip">Skip</string>
     <string name="button_signup_done">Done</string>
-    <string name="text_email_label">Email: </string>
-    <string name="text_new_user_name_label">New User Name: </string>
-    <string name="text_new_password_label">New Password: </string>
-    <string name="text_confirm_password_label">Confirm Password: </string>
-    <string name="hint_email">abc@yahoo.com</string>
-    <string name="hint_new_user_name">abcuser</string>
-    <string name="hint_new_password">abc123</string>
-    <string name="hint_confirm_password">abc123</string>
+    <string name="text_email_label">Email</string>
+    <string name="text_new_user_name_label">Username</string>
+    <string name="text_new_password_label">Password</string>
+    <string name="text_confirm_password_label">Confirm Password</string>
+    <string name="hint_email">abc@example.com</string>
+    <string name="hint_new_user_name">Username</string>
+    <string name="hint_new_password">Password</string>
+    <string name="hint_confirm_password">Confirm Password</string>
 
-    <!-- variable for sign in page -->
+    <!-- signin page -->
     <string name="title_activity_signin">SigninActivity</string>
-    <string name="button_go_to_sign_up">To Sign Up</string>
-    <string name="button_signin_skip">Skip</string>
-    <string name="button_signin_done">Done</string>
-    <string name="text_user_name_label">User Name: </string>
-    <string name="text_password_label">Password: </string>
-    <string name="hint_user_name">abcuser</string>
-    <string name="hint_password">abc123</string>
+    <string name="button_go_to_sign_up">Signup</string>
+    <string name="button_signin_cancel">Cancel</string>
+    <string name="text_user_name_label">Username</string>
+    <string name="text_password_label">Password</string>
+    <string name="hint_user_name">Username</string>
+    <string name="hint_password">Password</string>
 </resources>

@@ -1,12 +1,62 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="fill_parent"
              android:layout_height="fill_parent"
+             android:orientation="vertical"
              android:background="@drawable/splash_background">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/logodark"
-        android:layout_gravity="center"/>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="3">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logodark"
+            android:layout_gravity="center"/>
 
-</FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout android:id="@+id/signinForm"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:gravity="top|center">
+        <TabHost android:id="@android:id/tabhost"
+                 android:layout_width="300dp"
+                 android:layout_height="wrap_content"
+                 android:textColor="#f00"
+                 android:layout_gravity="center">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+                <TabWidget
+                    android:textColor="#f00"
+                    android:id="@android:id/tabs"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_tab"/>
+                <FrameLayout
+                    android:id="@android:id/tabcontent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#eee"/>
+            </LinearLayout>
+        </TabHost>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/signinMessage"
+            android:textSize="18dp"
+            android:gravity="center"
+            android:textColor="#ff201000"
+            android:padding="5dp"
+            android:background="@drawable/quote_social_button"
+            android:text="@string/register_skip"
+            android:onClick="skipSignin"/>
+    </LinearLayout>
+</LinearLayout>

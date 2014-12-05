@@ -24,13 +24,11 @@ public class QuotationsApplication extends Application {
         //register your subclass of ParseObject here, before initialize the app
         ParseObject.registerSubclass(Quotation.class);
         ParseObject.registerSubclass(Category.class);
-        ParseObject.registerSubclass(User.class);
 
         Parse.enableLocalDatastore(this);
         // Add your initialization code here
         Parse.initialize(this, YOUR_APPLICATION_ID, YOUR_CLIENT_KEY);
 
-        ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
 
         // If you would like all objects to be private by default, remove this line.

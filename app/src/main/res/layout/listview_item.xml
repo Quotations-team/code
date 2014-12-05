@@ -1,58 +1,89 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:minHeight="100dp"
-        android:padding="5dp"
-        android:background="@drawable/box_layout">
+    <FrameLayout android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:background="@drawable/quote_layout"
+           android:layout_marginTop="8dp"
+           android:layout_marginBottom="2dp">
 
         <LinearLayout
-            android:id="@+id/thumbnail"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:padding="3dp"
-            android:layout_marginRight="5dp">
-
-            <ImageView
-                android:id="@+id/quoteItemImage"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/category"/>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_margin="4dp">
+            android:paddingTop="14dp"
+            android:paddingBottom="1dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="1dp" >
 
-            <TextView
-                android:id="@+id/quoteItemCategory"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/thumbnails"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Romance"
-                android:textColor="#040404"
-                android:typeface="sans"
-                android:textSize="15sp"
-                android:textStyle="bold"/>
+                android:orientation="horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp">
+                <!-- Category thumbnails container -->
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/quoteItemQuote"
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#343434"
-                android:textSize="14sp"
-                android:layout_marginTop="2dp"
-                android:text="Love is like a friendship caught on fire. In the beginning a flame, very pretty, often hot and fierce, but still only light and flickering. As love grows older, our hearts mature and our love becomes as coals, deep-burning and unquenchable."/>
+                android:orientation="vertical"
+                android:layout_margin="4dp"
+                android:background="#90ffffff"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/quoteText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ff3d3d3d"
+                    android:textSize="22sp"
+                    android:layout_marginTop="2dp"
+                    android:text="In the beginning a flame, very pretty, often hot and fierce, but still only light and flickering. As love grows older, our hearts mature and our love becomes as coals, deep-burning and unquenchable."/>
+
+                <TextView
+                    android:id="@+id/quoteAuthor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-Mark Twaiin"
+                    android:textColor="#040404"
+                    android:typeface="sans"
+                    android:textSize="18sp"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="right"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                style="@style/socialBar">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/like"
+                    style="@style/likeButton"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/comment"
+                    style="@style/commentButton"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/addToFavorite"
+                    style="@style/favoriteButton"/>
+
+
+            </LinearLayout>
+
         </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+
+    </FrameLayout>
+</FrameLayout>

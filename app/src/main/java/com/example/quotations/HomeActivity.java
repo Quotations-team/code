@@ -7,6 +7,7 @@ import com.parse.FindCallback;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 import com.parse.starter.Category;
 import com.parse.starter.Quotation;
 
@@ -33,6 +34,7 @@ import android.widget.SearchView;
  * this Activity is called by splash screen.
  */
 public class HomeActivity extends Activity {
+
     private final int remoteQueryRowsLimit = 50;
     private final int localStorageMaxRows = 200;
     String searchTerm = null;
@@ -246,21 +248,21 @@ public class HomeActivity extends Activity {
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-        /*Intent i;
+        Intent i;
         switch (item.getItemId()) {
-            case R.id.action_search:
-                i = new Intent(getBaseContext(), SearchActivity.class);
+            case R.id.logout:
+                //ParseUser.logOut();
+                ParseUser.getCurrentUser().logOut();
+                ParseUser currentUser = ParseUser.getCurrentUser(); // this will now be null
+
+
+                i = new Intent(getBaseContext(), SplashActivity.class);
                 startActivity(i);
-                break;
-            case R.id.action_category:
-                if (mDrawerLayout.isDrawerOpen(Gravity.LEFT))
-                    mDrawerLayout.closeDrawer(Gravity.LEFT);
-                else
-                    mDrawerLayout.openDrawer(Gravity.LEFT);
+                finish();
                 break;
             default:
                 break;
-        }*/
+        }
         return super.onOptionsItemSelected(item);
     }
 

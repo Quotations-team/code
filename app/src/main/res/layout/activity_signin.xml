@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:text="@string/text_user_name_label" />
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext"
+            android:id="@+id/etUserName"
+            android:hint="@string/hint_user_name"
+            android:inputType="text"
+            android:textColor="#000"
+            style="@style/EditText"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:text="@string/text_password_label"/>
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext"
+            android:id="@+id/etPassword"
+            android:inputType="textPassword"
+            android:textColor="#000"
+            android:hint="@string/hint_password"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:maxWidth="300dp"
+        style="@style/btnStyleBlue"
+        android:text="@string/signin"
+        android:layout_gravity="center"
+        android:onClick="signin"/>
+
+    <TextView
+        android:id="@+id/signinMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:textColor="#000"
+        android:layout_gravity="center"/>
+</LinearLayout>

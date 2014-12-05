@@ -1,30 +1,23 @@
 package com.example.quotations;
 
-import android.app.Activity;
+import android.app.TabActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
-
-import com.example.quotations.R;
-import com.viewpagerindicator.CirclePageIndicator;
-import com.viewpagerindicator.GuideFragmentAdapter;
-
 import android.os.Handler;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.LinearLayout;
+import android.widget.TabHost;
+
+import com.parse.ParseUser;
 
 
-public class SplashActivity extends FragmentActivity {
+public class SplashActivity extends TabActivity {
     // Splash screen timer
     private static int SPLASH_TIME_OUT = 1000;
     SharedPreferences wmbPreference;
-    CirclePageIndicator circlePageIndicator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,76 +29,55 @@ public class SplashActivity extends FragmentActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         if (isFirstRun) {
-            // if its first lunch, open guide view
-            setContentView(R.layout.activity_guide);
-
-            //Set the pager with an adapter
-            ViewPager pager = (ViewPager) findViewById(R.id.pager);
-            pager.setAdapter(new GuideFragmentAdapter(getSupportFragmentManager()));
-
-            //Bind the title indicator to the adapter
-            circlePageIndicator = (CirclePageIndicator) findViewById(R.id.indicator);
-            circlePageIndicator.setViewPager(pager);
-
-            ((TextView) findViewById(R.id.skip)).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    endGuideView(null);
-                }
-            });
-
-            circlePageIndicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                @Override
-                public void onPageSelected(int position) {
-                    if (position == 2) {
-                        TextView tx = (TextView) findViewById(R.id.skip);
-                        tx.setVisibility(View.GONE);
-                        Button btn = (Button) findViewById(R.id.endGuide);
-                        btn.setVisibility(View.VISIBLE);
-                    }
-                }
-
-                @Override
-                public void onPageScrollStateChanged(int state) {
-                }
-
-                @Override
-                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                }
-            });
-
-            if (false) {
-                SharedPreferences.Editor editor = wmbPreference.edit();
-                editor.putBoolean("FirstRun", false);
-                editor.commit();
-            }
-        } else {
-
+            Intent i = new Intent(getBaseContext(), GuideActivity.class);
+            startActivity(i);
+            finish();
+        }
+        else {
             // Show Splash Screen
             setContentView(R.layout.splash_screen);
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    // This method will be executed once the timer is over
-                    // Start the app main activity
-                    Intent i = new Intent(getBaseContext(), HomeActivity.class);
-                    startActivity(i);
+            TabHost tabHost = getTabHost();
 
-                    finish();
-                }
-            }, SPLASH_TIME_OUT);
+            // Tab for Signin
+            TabHost.TabSpec signinspec = tabHost.newTabSpec("Signin");
+            signinspec.setIndicator("Signin", getResources().getDrawable(R.drawable.custom_tab));
+            Intent photosIntent = new Intent(this, SigninActivity.class);
+            signinspec.setContent(photosIntent);
+
+            // Tab for Signup
+            TabHost.TabSpec signupspec = tabHost.newTabSpec("Signup");
+            signupspec.setIndicator("Signup", getResources().getDrawable(R.drawable.custom_tab));
+            Intent songsIntent = new Intent(this, SignupActivity.class);
+            signupspec.setContent(songsIntent);
+
+            // Adding all TabSpec to TabHost
+            tabHost.addTab(signinspec);   // Adding photos tab
+            tabHost.addTab(signupspec);   // Adding songs tab
+
+            // Check user is logged in
+            ParseUser currentUser = ParseUser.getCurrentUser();
+            if (currentUser != null) {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // This method will be executed once the timer is over
+                        // Start the app main activity
+                        Intent i = new Intent(getBaseContext(), HomeActivity.class);
+                        startActivity(i);
+
+                        finish();
+                    }
+                }, SPLASH_TIME_OUT);
+            } else {
+                ((LinearLayout) findViewById(R.id.signinForm)).setVisibility(View.VISIBLE);
+            }
         }
     }
 
-    public void endGuideView(View view) {
-        SharedPreferences.Editor editor = wmbPreference.edit();
-        editor.putBoolean("FirstRun", false);
-        editor.commit();
-
+    public void skipSignin(View view) {
         Intent i = new Intent(getBaseContext(), HomeActivity.class);
         startActivity(i);
         finish();
     }
-
 }

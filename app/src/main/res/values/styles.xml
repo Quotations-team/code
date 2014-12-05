@@ -1,5 +1,16 @@
 <resources>
 
+    <style name="Theme"
+           parent="@android:style/Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/ActionBar</item>
+        <item name="android:tabWidgetStyle">@android:style/Widget.TabWidget</item>
+    </style>
+
+    <style name="ActionBar"
+           parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">#f0802b</item>
+    </style>
+
     <style name="Theme.SplashScreen" parent="@android:style/Theme.Holo.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_background</item>
     </style>
@@ -8,4 +19,97 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
+    <style name="Widget.TabWidget">
+        <item name="android:textAppearance">@style/TextAppearanceWidget</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="TextAppearanceWidget">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ff00b6fa</item>
+    </style>
+
+    <style name="socialBar">
+        <item name="android:background">@drawable/quote_social_bar</item>
+        <item name="android:gravity">right</item>
+    </style>
+
+    <style name="likeButton">
+        <item name="android:background">@drawable/quote_social_button</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">#ff6f6f6f</item>
+        <item name="android:drawableLeft">@drawable/like</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:height">40dp</item>
+        <item name="android:text">Like</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="commentButton">
+        <item name="android:background">@drawable/quote_social_button</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">#ff6f6f6f</item>
+        <item name="android:drawableLeft">@drawable/comment</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:height">40dp</item>
+        <item name="android:text">Comment</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="favoriteButton">
+        <item name="android:background">@drawable/quote_social_button</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">#ff6f6f6f</item>
+        <item name="android:drawableLeft">@drawable/star2</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:height">40dp</item>
+        <item name="android:text">Favorite</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Label">
+        <item name="android:textSize">14dp</item>
+        <item name="android:color">#000</item>
+    </style>
+    <style name="EditText">
+        <item name="android:textSize">14dp</item>
+        <item name="android:color">#000</item>
+    </style>
+
+    <style name="btnStyleOrange" parent="@android:style/Widget.Button">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:gravity">center</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">0.6</item>
+        <item name="android:background">@drawable/custom_btn_orange</item>
+        <item name="android:padding">10dip</item>
+    </style>
+
+    <style name="btnStyleBlue" parent="@android:style/Widget.Button">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:gravity">center</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">0.6</item>
+        <item name="android:background">@drawable/custom_btn_blue</item>
+        <item name="android:padding">10dip</item>
+    </style>
 </resources>

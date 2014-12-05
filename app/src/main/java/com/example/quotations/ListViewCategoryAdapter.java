@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.parse.starter.Category;
@@ -46,9 +47,14 @@ public class ListViewCategoryAdapter extends BaseAdapter {
             vi = inflater.inflate(R.layout.drawer_item, null);
 
         TextView category = (TextView) vi.findViewById(R.id.categoryName);
+        ImageView categoryIcon = (ImageView) vi.findViewById(R.id.categoryIcon);
 
         String txt = data.get(position).getCategory().toString();
         category.setText(txt);
+
+        int i = vi.getContext().getResources().
+                getIdentifier("drawable/" + txt.toLowerCase() + "_grey", null, vi.getContext().getPackageName());
+        categoryIcon.setImageResource(i);
 
         return vi;
     }
