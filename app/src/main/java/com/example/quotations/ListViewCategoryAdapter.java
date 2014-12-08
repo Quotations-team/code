@@ -49,12 +49,14 @@ public class ListViewCategoryAdapter extends BaseAdapter {
         TextView category = (TextView) vi.findViewById(R.id.categoryName);
         ImageView categoryIcon = (ImageView) vi.findViewById(R.id.categoryIcon);
 
+
         String txt = data.get(position).getCategory().toString();
         category.setText(txt);
 
-        int i = vi.getContext().getResources().
+        int categoryIconResourceId = vi.getContext().getResources().
                 getIdentifier("drawable/" + txt.toLowerCase() + "_grey", null, vi.getContext().getPackageName());
-        categoryIcon.setImageResource(i);
+        categoryIcon.setImageResource(categoryIconResourceId);
+
 
         return vi;
     }

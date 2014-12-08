@@ -35,6 +35,22 @@ public class Quotation extends ParseObject {
         put("Author", author);
     }
 
+    public int getLikes() {
+        return getInt("Likes");
+    }
+
+    public void addLikes() {
+        put("Likes", getLikes() + 1);
+    }
+
+    public int getComments() {
+        return getInt("Comment");
+    }
+
+    public void addComments() {
+        put("Comment", getInt("Comment") + 1);
+    }
+
     @Override
     public String toString() {
         return "Category: " + getString("Category") + ", " + getString("Quote");

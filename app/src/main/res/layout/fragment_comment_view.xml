@@ -18,20 +18,9 @@
             android:divider="@null"
             android:dividerHeight="0dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="0dp">
+            android:layout_marginRight="10dp">
         </ListView>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/emptyElement"
-            android:text="@string/no_result_found"
-            android:visibility="invisible"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:paddingTop="30dp"
-            android:paddingBottom="30dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"/>
+
     </LinearLayout>
 
     <ListView

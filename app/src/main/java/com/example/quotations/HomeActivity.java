@@ -1,14 +1,19 @@
 package com.example.quotations;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.parse.FindCallback;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.starter.Category;
+import com.parse.starter.Favorite;
+import com.parse.starter.Like;
 import com.parse.starter.Quotation;
 
 import android.app.Activity;
@@ -37,14 +42,17 @@ public class HomeActivity extends Activity {
 
     private final int remoteQueryRowsLimit = 50;
     private final int localStorageMaxRows = 200;
-    String searchTerm = null;
+    private String searchTerm = null;
+    private ParseUser currentUser;
 
-    private ListviewAdapter adapter;
-    private ListViewCategoryAdapter categoryAdapter;
     private List<Quotation> quotations;
     private List<Category> categories;
+    private List<Favorite> favorites;
+    private List<Like> likes;
+    private ListviewAdapter adapter;
+    private ListViewCategoryAdapter categoryAdapter;
 
-
+    private ProgressDialog progress;
     private ListView listView;
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
@@ -56,9 +64,13 @@ public class HomeActivity extends Activity {
         setContentView(R.layout.activity_home);
         handleIntent(getIntent());
 
+        currentUser = ParseUser.getCurrentUser();
+
         quotations = new ArrayList<Quotation>();
+        favorites = new ArrayList<Favorite>();
 
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
+
 
         // Init Dryer Navigation
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -108,8 +120,9 @@ public class HomeActivity extends Activity {
 
         // Init Quotes ListView
         listView = (ListView) findViewById(R.id.lvRandomQuote);
+        listView.setEmptyView(findViewById(R.id.emptyElement));
         listView.setSelector(R.color.background_home);
-        adapter = new ListviewAdapter(this, quotations);
+        adapter = new ListviewAdapter(this, quotations, likes, favorites);
         listView.setAdapter(adapter);
         listView.setOnScrollListener(new EndlessScrollListener() {
             @Override
@@ -119,7 +132,6 @@ public class HomeActivity extends Activity {
         });
         loadQuotes(getCategoryFilter(), searchTerm, 1);
     }
-
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -139,10 +151,12 @@ public class HomeActivity extends Activity {
     }
 
     private void loadQuotes(List<String> categories, String searchTerm, final int page) {
+
         ParseQuery<Quotation> query = ParseQuery.getQuery("Quotation");
         query.setLimit(remoteQueryRowsLimit);
+        query.orderByDescending("Likes");
 
-        if (categories != null) {
+        if (categories != null && categories.size() > 0) {
             String regex = "^.*(";
             for (String category : categories)
                 regex += category + "|";
@@ -152,11 +166,11 @@ public class HomeActivity extends Activity {
             query.whereMatches("Category", regex);
         }
 
-        if (searchTerm != null) {
-            String regex = "^";
+        if (searchTerm != null && searchTerm.length() > 0) {
+            String regex = "";
             String[] words = searchTerm.trim().toLowerCase().split(" ");
             for (String word : words)
-                regex += "(?=.*" + word + ")";
+                regex += "(?=.*\\W" + word + "\\W)";
 
             query.whereMatches("Quote", regex);
         }
@@ -166,9 +180,15 @@ public class HomeActivity extends Activity {
             query.setSkip((page - 1) * remoteQueryRowsLimit);
         }
 
+
+
+
+
         showLoading(true);
 
         query.findInBackground(new FindCallback<Quotation>() {
+
+
             @Override
             public void done(List<Quotation> data, ParseException e) {
                 if (e == null) {
@@ -181,12 +201,74 @@ public class HomeActivity extends Activity {
                                     quotations.remove(quotations.size() - 1);
                             }
                         }
-                        updateQuoteListView(false);
+                        refreshListView = false;
                     } else {
                         quotations = data;
-                        updateQuoteListView(true);
+                        refreshListView = true;
+                    }
+
+                    // Load favorites and likes to show if quote is liked or is in favorite list
+                    if (currentUser != null) {
+                        completedRequests = 0;
+                        loadFavorites();
+                        loadLikes();
+                    }
+                    else
+                    {
+                        updateQuoteListView(refreshListView);
                     }
                 }
+            }
+        });
+    }
+
+    private int completedRequests = 0;
+    private boolean refreshListView = false;
+
+    public void loadLikes(){
+        ParseQuery<Like> likeQuery = ParseQuery.getQuery("Like");
+        likeQuery.whereEqualTo("userId", currentUser);
+        likeQuery.whereContainedIn("quoteId", quotations);
+        likeQuery.findInBackground(new FindCallback<Like>() {
+            @Override
+            public void done(List<Like> data, ParseException e) {
+                likes = data;
+                completedRequests++;
+
+                if (completedRequests == 2)
+                    updateQuoteListView(refreshListView);
+            }
+        });
+    }
+
+    public void loadComments(){
+        /*
+        ParseQuery<Favorite> favoriteQuery = ParseQuery.getQuery("Favorite");
+        favoriteQuery.whereMatches("userId", currentUser.getObjectId());
+        favoriteQuery.findInBackground(new FindCallback<Favorite>() {
+            @Override
+            public void done(List<Favorite> data, ParseException e) {
+                favorites = data;
+                completedRequests++;
+
+                if(completedRequests == 3)
+                    updateQuoteListView(refreshListView);
+            }
+        });*/
+    }
+
+    public void loadFavorites(){
+
+        ParseQuery<Favorite> favoriteQuery = ParseQuery.getQuery("Favorite");
+        favoriteQuery.whereEqualTo("userId", currentUser);
+        favoriteQuery.findInBackground(new FindCallback<Favorite>() {
+            @Override
+            public void done(List<Favorite> data, ParseException e) {
+                favorites = data;
+                completedRequests++;
+
+                if(completedRequests == 2)
+                    updateQuoteListView(refreshListView);
             }
         });
     }
@@ -207,7 +289,7 @@ public class HomeActivity extends Activity {
 
     public void updateQuoteListView(boolean refresh) {
         if (refresh) {
-            adapter = new ListviewAdapter(this, quotations);
+            adapter = new ListviewAdapter(this, quotations, likes, favorites);
             listView.setAdapter(adapter);
         } else
             adapter.notifyDataSetChanged();
@@ -227,8 +309,6 @@ public class HomeActivity extends Activity {
             }
         });
     }
-
-    ProgressDialog progress;
 
     private void showLoading(boolean visible) {
         if (visible) {

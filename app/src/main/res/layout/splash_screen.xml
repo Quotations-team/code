@@ -15,7 +15,6 @@
             android:layout_height="wrap_content"
             android:src="@drawable/logodark"
             android:layout_gravity="center"/>
-
     </LinearLayout>
 
     <LinearLayout android:id="@+id/signinForm"
@@ -23,6 +22,7 @@
                 android:layout_height="fill_parent"
                 android:orientation="vertical"
                 android:layout_weight="1"
+                android:visibility="gone"
                 android:gravity="top|center">
         <TabHost android:id="@android:id/tabhost"
                  android:layout_width="300dp"

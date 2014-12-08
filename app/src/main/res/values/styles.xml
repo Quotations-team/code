@@ -19,18 +19,6 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
-    <style name="Widget.TabWidget">
-        <item name="android:textAppearance">@style/TextAppearanceWidget</item>
-        <item name="android:ellipsize">marquee</item>
-        <item name="android:singleLine">true</item>
-    </style>
-
-    <style name="TextAppearanceWidget">
-        <item name="android:textSize">18sp</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textColor">#ff00b6fa</item>
-    </style>
-
     <style name="socialBar">
         <item name="android:background">@drawable/quote_social_bar</item>
         <item name="android:gravity">right</item>
@@ -69,7 +57,7 @@
         <item name="android:textSize">15sp</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:textColor">#ff6f6f6f</item>
-        <item name="android:drawableLeft">@drawable/star2</item>
+        <item name="android:drawableLeft">@drawable/star</item>
         <item name="android:drawablePadding">4dp</item>
         <item name="android:paddingLeft">10dp</item>
         <item name="android:paddingRight">10dp</item>
