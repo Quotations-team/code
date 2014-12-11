@@ -7,6 +7,7 @@ import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+import com.parse.PushService;
 import com.parse.starter.*;
 
 public class QuotationsApplication extends Application {
@@ -28,9 +29,11 @@ public class QuotationsApplication extends Application {
         ParseObject.registerSubclass(Comment.class);
         ParseObject.registerSubclass(Like.class);
 
-        Parse.enableLocalDatastore(this);
-        // Add your initialization code here
-        Parse.initialize(this, YOUR_APPLICATION_ID, YOUR_CLIENT_KEY);
+        Parse.setLogLevel(Parse.LOG_LEVEL_VERBOSE);
+        //Parse.enableLocalDatastore(this);
+
+        Parse.initialize(this, YOUR_APPLICATION_ID, YOUR_CLIENT_KEY);  // Also in this method, specify a default Activity to handle push notifications
+        PushService.setDefaultPushCallback(this, HomeActivity.class);
 
         ParseACL defaultACL = new ParseACL();
 

@@ -2,26 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item android:id="@+id/favorites"
+          android:title="@string/favorites"
+          app:showAsAction="collapseActionView"
+          android:actionViewClass="android.widget.SearchView" />
+
     <item android:id="@+id/logout"
         android:title="@string/logout"/>
-<!--
-    <item
-        android:id="@+id/action_category"
-        android:icon="@drawable/ic_action_category_light"
-        android:title="@string/menu_item_to_category_page"
-        app:showAsAction="always"
-        android:showAsAction="always"/>
 
-    <item android:id="@+id/search"
+
+    <item android:id="@+id/action_search"
           android:title="@string/search_hint"
           android:icon="@drawable/ic_action_search_light"
-          android:showAsAction="collapseActionView|ifRoom"
-          android:actionViewClass="android.widget.SearchView" />
-          -->
-        <item android:id="@+id/action_search"
-              android:title="@string/search_hint"
-              android:icon="@drawable/ic_action_search_light"
-              app:showAsAction="ifRoom"
-              android:showAsAction="ifRoom"
-                android:actionViewClass="android.widget.SearchView" />
+          app:showAsAction="ifRoom"
+          android:showAsAction="ifRoom"
+            android:actionViewClass="android.widget.SearchView" />
 </menu>

@@ -156,7 +156,15 @@ public class HomeActivity extends Activity {
         query.setLimit(remoteQueryRowsLimit);
         query.orderByDescending("Likes");
 
-        if (categories != null && categories.size() > 0) {
+        if (searchTerm != null && searchTerm.length() > 0) {
+            String regex = "";
+            String[] words = searchTerm.trim().toLowerCase().split(" ");
+            for (String word : words)
+                regex += "(?=.*\\W" + word + "\\W)";
+
+            query.whereMatches("Quote", regex);
+        }
+        else if (categories != null && categories.size() > 0) {
             String regex = "^.*(";
             for (String category : categories)
                 regex += category + "|";
@@ -166,14 +174,6 @@ public class HomeActivity extends Activity {
             query.whereMatches("Category", regex);
         }
 
-        if (searchTerm != null && searchTerm.length() > 0) {
-            String regex = "";
-            String[] words = searchTerm.trim().toLowerCase().split(" ");
-            for (String word : words)
-                regex += "(?=.*\\W" + word + "\\W)";
-
-            query.whereMatches("Quote", regex);
-        }
 
         if (page > 1) {
             query.setLimit(remoteQueryRowsLimit);
@@ -328,16 +328,14 @@ public class HomeActivity extends Activity {
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-        Intent i;
+
         switch (item.getItemId()) {
+            case R.id.favorites:
+                break;
             case R.id.logout:
-                //ParseUser.logOut();
                 ParseUser.getCurrentUser().logOut();
-                ParseUser currentUser = ParseUser.getCurrentUser(); // this will now be null
 
-
-                i = new Intent(getBaseContext(), SplashActivity.class);
-                startActivity(i);
+                startActivity(new Intent(getBaseContext(), SplashActivity.class));
                 finish();
                 break;
             default:
