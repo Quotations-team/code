@@ -13,18 +13,35 @@
     <!-- Menu -->
     <string name="logout">Logout</string>
 
-
     <string name="title_activity_guide">Quotations</string>
     <string name="skip">Skip</string>
     <string name="endGuide">Got it!</string>
 
 
+    <!-- Signin -->
     <string name="signin">Signin</string>
     <string name="signup">Signup</string>
     <string name="skipSignin">Skip</string>
 
+    <!-- Signin Messages -->
+    <string name="signin_connection_error">Cannot connect to server. Check your internet connection please.</string>
+    <string name="signin_incorrect_user_pass">Username and password is incorrect.</string>
+    <string name="signin_unknown_error">Something was wrong. Try again later please.</string>
+
+    <!-- Signup -->
+    <string name="register">Signup / Signin</string>
     <string name="register_detail">Signin to add comment and like quotes or </string>
     <string name="register_skip">Continue without registration</string>
+
+
+    <!-- Signup Messages -->
+    <string name="signup_connection_error">Cannot connect to server. Check your internet connection please.</string>
+    <string name="signup_user_exist">Username is taken. Choose a different username please.</string>
+    <string name="signup_invalid_email">Email is incorrect. Try again please.</string>
+    <string name="signup_unknown_error">Something was wrong. Try again later please.</string>
+    <string name="signup_password_does_not_match">Password does not match the confirm password.</string>
+
+
     <!-- signup page -->
     <string name="title_activity_signup">SignupActivity</string>
     <string name="button_go_to_sign_in">Signin</string>
@@ -49,11 +66,13 @@
     <string name="hint_password">Password</string>
 
     <string name="favorites">Favorites</string>
-    <string name="favorite_inactive">Add to favorites</string>
-    <string name="favorite_active">Remove from favorites</string>
+    <string name="favorite_inactive">Favorite</string>
+    <string name="favorite_active">Favorite</string>
     <string name="like_inactive">Like</string>
     <string name="like_active">Liked</string>
 
     <string name="no_result_found">Your search did not match any quote. Try different keywords please.</string>
+    <string name="ask_for_registration">Please register to use all features.</string>
+    <string name="no_favorite_found">Your favorite list is empty.</string>
 
 </resources>

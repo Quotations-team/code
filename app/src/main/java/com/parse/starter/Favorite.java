@@ -2,6 +2,9 @@ package com.parse.starter;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
+
+import java.util.List;
 
 @ParseClassName("Favorite")
 public class Favorite extends ParseObject {
@@ -10,25 +13,25 @@ public class Favorite extends ParseObject {
 
     }
 
-    public Object getQuoteId() {
-        return get("quoteId");
+    public Object getQuote() {
+        return get("quote");
     }
 
-    public void setQuoteId(Object quoteId) {
-        put("quoteId", quoteId);
+    public void setQuote(Object quote) {
+        put("quote", quote);
     }
 
-    public Object getUserId() {
-        return get("userId");
+    public Object getUser() {
+        return getString("user");
     }
 
-    public void setUserId(Object userId) {
-        put("userId", userId);
+    public void setUser(Object user) {
+        put("user", user);
     }
 
     @Override
     public String toString() {
-        return "UserId: " + get("userId") + ", QuoteId:" + get("quoteId");
+        return "User: " + ((ParseUser)get("user")).getUsername() + ", Quote:" + ((Quotation)get("quote")).toString();
     }
 
 }

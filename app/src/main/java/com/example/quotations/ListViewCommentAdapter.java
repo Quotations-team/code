@@ -6,23 +6,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.parse.starter.Category;
+import com.parse.starter.Comment;
 
+import java.util.Date;
 import java.util.List;
 
 
-public class ListViewCategoryAdapter extends BaseAdapter {
+public class ListViewCommentAdapter extends BaseAdapter {
     private Activity activity;
     private static LayoutInflater inflater = null;
-    List<Category> data;
+    List<Comment> data;
 
-    public ListViewCategoryAdapter(Activity a, List<Category> categories) {
+    public ListViewCommentAdapter(Activity a, List<Comment> comments) {
         activity = a;
         inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        data = categories;
+        data = comments;
     }
 
     public int getCount() {
@@ -44,20 +44,17 @@ public class ListViewCategoryAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View vi = convertView;
         if (convertView == null)
-            vi = inflater.inflate(R.layout.listview_category_item, null);
+            vi = inflater.inflate(R.layout.listview_comment_item, null);
 
-        TextView category = (TextView) vi.findViewById(R.id.categoryName);
-        ImageView categoryIcon = (ImageView) vi.findViewById(R.id.categoryIcon);
+        TextView commentUsername = (TextView) vi.findViewById(R.id.commentUsername);
+        TextView commentText = (TextView) vi.findViewById(R.id.commentText);
+        TextView commentTime = (TextView) vi.findViewById(R.id.commentTime);
 
-
-        String txt = data.get(position).getCategory().toString();
-        category.setText(txt);
-
-        int categoryIconResourceId = vi.getContext().getResources().
-                getIdentifier("drawable/" + txt.toLowerCase() + "_grey", null, vi.getContext().getPackageName());
-        categoryIcon.setImageResource(categoryIconResourceId);
-
+        commentUsername.setText(data.get(position).getUserName());
+        commentText.setText(data.get(position).getText());
+        commentTime.setText(QuotationsHelper.getFormattedDate(data.get(position).getCreatedAt()));
 
         return vi;
     }
+
 }

@@ -10,10 +10,14 @@ import com.parse.ParseUser;
 import com.parse.PushService;
 import com.parse.starter.*;
 
-public class QuotationsApplication extends Application {
+import java.util.List;
+
+public class QuotationsApplication extends android.app.Application {
     private static final String YOUR_APPLICATION_ID = "T7ERQGdeM8rlb00GTt0up3ioa5JQQmOLafINESSa";
     private static final String YOUR_CLIENT_KEY = "qqbo4C2Fw6EqYOWIs5yLN6zevLJQ2xMLyIzS23Ek";
 
+    public static List<Like> likes;
+    public static List<Favorite> favorites;
 
     @Override
     public void onCreate() {
@@ -42,4 +46,11 @@ public class QuotationsApplication extends Application {
 
         ParseACL.setDefaultACL(defaultACL, true);
     }
+
+}
+
+enum ButtonStatus {
+    active,
+    inactive,
+    unknown
 }

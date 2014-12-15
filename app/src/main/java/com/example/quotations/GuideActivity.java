@@ -25,7 +25,7 @@ public class GuideActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // if its first lunch, open guide view
-        setContentView(R.layout.activity_guide);
+        setContentView(R.layout.layout_guide);
 
         //Set the pager with an adapter
         ViewPager pager = (ViewPager) findViewById(R.id.pager);

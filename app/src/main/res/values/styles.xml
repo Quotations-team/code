@@ -1,18 +1,39 @@
 <resources>
 
-    <style name="Theme"
-           parent="@android:style/Theme.Holo.Light.DarkActionBar">
+    <style name="Theme" parent="@android:style/Theme.Holo.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/ActionBar</item>
         <item name="android:tabWidgetStyle">@android:style/Widget.TabWidget</item>
+    </style>
+
+    <style name="Theme.SplashScreen" parent="@android:style/Theme.Holo.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="vpiIconPageIndicatorStyle">@style/Widget.IconPageIndicator</item>
+        <item name="vpiCirclePageIndicatorStyle">@style/CustomCirclePageIndicator</item>
+    </style>
+
+    <style name="Widget">
+    </style>
+
+    <style name="Widget.IconPageIndicator" parent="Widget">
+        <item name="android:layout_marginLeft">6dp</item>
+        <item name="android:layout_marginRight">6dp</item>
+    </style>
+
+    <style name="CustomCirclePageIndicator">
+        <item name="fillColor">#ffffff</item>
+        <item name="strokeColor">#ffffff</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="radius">5dp</item>
+        <item name="centered">true</item>
+    </style>
+
+    <style name="vpiCirclePageIndicatorStyle">
+        <item name="android:color">#FF0000</item>
     </style>
 
     <style name="ActionBar"
            parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:background">#f0802b</item>
-    </style>
-
-    <style name="Theme.SplashScreen" parent="@android:style/Theme.Holo.NoActionBar">
-        <item name="android:windowBackground">@drawable/splash_background</item>
     </style>
 
     <style name="AppThemeNoBar">

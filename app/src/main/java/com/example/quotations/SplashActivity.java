@@ -35,7 +35,7 @@ public class SplashActivity extends TabActivity {
         }
         else {
             // Show Splash Screen
-            setContentView(R.layout.splash_screen);
+            setContentView(R.layout.layout_splash_screen);
 
             TabHost tabHost = getTabHost();
 

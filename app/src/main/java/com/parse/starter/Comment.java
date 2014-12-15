@@ -11,32 +11,32 @@ public class Comment extends ParseObject {
     }
 
     public String getQuoteId() {
-        return getString("QuoteId").toString();
+        return getString("quoteId").toString();
     }
 
     public void setQuoteId(String quoteId) {
-        put("QuoteId", quoteId);
+        put("quoteId", quoteId);
     }
 
-    public String getUserId() {
-        return getString("UserId").toString();
+    public String getUserName() {
+        return getString("userName").toString();
     }
 
-    public void setUserId(String userId) {
-        put("UserId", userId);
+    public void setUserName(String userId) {
+        put("userName", userId);
     }
 
     public String getText() {
-        return getString("Text").toString();
+        return getString("text").toString();
     }
 
     public void setText(String text) {
-        put("Text", text);
+        put("text", text);
     }
 
     @Override
     public String toString() {
-        return "UserId: " + getString("userId") + ", " + getString("text");
+        return "UserName: " + getString("userName") + ", " + getString("text");
     }
 
 }

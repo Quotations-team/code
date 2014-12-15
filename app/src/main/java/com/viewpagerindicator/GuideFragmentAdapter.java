@@ -17,11 +17,11 @@ public class GuideFragmentAdapter extends FragmentPagerAdapter implements IconPa
     @Override
     public Fragment getItem(int position) {
         if (position == 0)
-            return GuideFragment.newInstance(R.layout.guide1, false);
+            return GuideFragment.newInstance(R.layout.layout_guide_page1, false);
         else if (position == 1)
-            return GuideFragment.newInstance(R.layout.guide2, false);
+            return GuideFragment.newInstance(R.layout.layout_guide_page2, false);
         else
-            return GuideFragment.newInstance(R.layout.guide3, false);
+            return GuideFragment.newInstance(R.layout.layout_guide_page3, false);
     }
 
     @Override

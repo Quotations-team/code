@@ -44,11 +44,11 @@ public class Quotation extends ParseObject {
     }
 
     public int getComments() {
-        return getInt("Comment");
+        return getInt("Comments");
     }
 
     public void addComments() {
-        put("Comment", getInt("Comment") + 1);
+        put("Comments", getInt("Comments") + 1);
     }
 
     @Override

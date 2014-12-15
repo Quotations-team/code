@@ -15,7 +15,7 @@
             android:text="@string/text_new_user_name_label"/>
         <EditText
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:background="@drawable/edittext"
             android:id="@+id/etNewUserName"
             android:inputType="text"
@@ -34,7 +34,7 @@
             android:text="@string/text_email_label"/>
         <EditText
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:background="@drawable/edittext"
             android:id="@+id/etEmail"
             android:textColor="#000"
@@ -53,7 +53,7 @@
             android:id="@+id/tvNewPasswordLabel"/>
         <EditText
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:background="@drawable/edittext"
             android:id="@+id/etNewPassword"
             android:inputType="textPassword"
@@ -72,7 +72,7 @@
             android:id="@+id/tvConfirmPasswordLabel"/>
         <EditText
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:background="@drawable/edittext"
             android:id="@+id/etConfirmPassword"
             android:inputType="textPassword"

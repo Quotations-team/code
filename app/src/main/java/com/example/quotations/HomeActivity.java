@@ -1,14 +1,11 @@
 package com.example.quotations;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import com.parse.FindCallback;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.starter.Category;
@@ -34,6 +31,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 /*
  * this Activity is called by splash screen.
@@ -47,9 +45,8 @@ public class HomeActivity extends Activity {
 
     private List<Quotation> quotations;
     private List<Category> categories;
-    private List<Favorite> favorites;
-    private List<Like> likes;
-    private ListviewAdapter adapter;
+
+    private ListviewQuoteAdapter adapter;
     private ListViewCategoryAdapter categoryAdapter;
 
     private ProgressDialog progress;
@@ -58,16 +55,18 @@ public class HomeActivity extends Activity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
 
+    private int completedRequests = 0;
+    private boolean refreshListView = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.layout_home_content);
         handleIntent(getIntent());
 
         currentUser = ParseUser.getCurrentUser();
 
         quotations = new ArrayList<Quotation>();
-        favorites = new ArrayList<Favorite>();
 
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
@@ -86,13 +85,13 @@ public class HomeActivity extends Activity {
              */
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
-                //getActionBar().setTitle(mTitle);
+                getActionBar().setTitle("Quotations");
             }
 
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                //getActionBar().setTitle(mDrawerTitle);
+                getActionBar().setTitle("Categories");
             }
         };
 
@@ -122,7 +121,7 @@ public class HomeActivity extends Activity {
         listView = (ListView) findViewById(R.id.lvRandomQuote);
         listView.setEmptyView(findViewById(R.id.emptyElement));
         listView.setSelector(R.color.background_home);
-        adapter = new ListviewAdapter(this, quotations, likes, favorites);
+        adapter = new ListviewQuoteAdapter(this, quotations);
         listView.setAdapter(adapter);
         listView.setOnScrollListener(new EndlessScrollListener() {
             @Override
@@ -131,23 +130,6 @@ public class HomeActivity extends Activity {
             }
         });
         loadQuotes(getCategoryFilter(), searchTerm, 1);
-    }
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-        handleIntent(intent);
-    }
-
-    private void handleIntent(Intent intent) {
-
-        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
-
-            searchTerm = query;
-
-            loadQuotes(getCategoryFilter(), searchTerm, 1);
-            findViewById(R.id.action_search).clearFocus();
-        }
     }
 
     private void loadQuotes(List<String> categories, String searchTerm, final int page) {
@@ -181,9 +163,6 @@ public class HomeActivity extends Activity {
         }
 
 
-
-
-
         showLoading(true);
 
         query.findInBackground(new FindCallback<Quotation>() {
@@ -207,7 +186,7 @@ public class HomeActivity extends Activity {
                         refreshListView = true;
                     }
 
-                    // Load favorites and likes to show if quote is liked or is in favorite list
+                    // Load favorites and likes to show if layout_single_quote is liked or is in favorite list
                     if (currentUser != null) {
                         completedRequests = 0;
                         loadFavorites();
@@ -222,17 +201,14 @@ public class HomeActivity extends Activity {
         });
     }
 
-    private int completedRequests = 0;
-    private boolean refreshListView = false;
-
     public void loadLikes(){
         ParseQuery<Like> likeQuery = ParseQuery.getQuery("Like");
-        likeQuery.whereEqualTo("userId", currentUser);
-        likeQuery.whereContainedIn("quoteId", quotations);
+        likeQuery.whereEqualTo("user", currentUser);
+        likeQuery.whereContainedIn("quote", quotations);
         likeQuery.findInBackground(new FindCallback<Like>() {
             @Override
             public void done(List<Like> data, ParseException e) {
-                likes = data;
+                QuotationsApplication.likes = data;
                 completedRequests++;
 
                 if (completedRequests == 2)
@@ -241,30 +217,14 @@ public class HomeActivity extends Activity {
         });
     }
 
-    public void loadComments(){
-        /*
-        ParseQuery<Favorite> favoriteQuery = ParseQuery.getQuery("Favorite");
-        favoriteQuery.whereMatches("userId", currentUser.getObjectId());
-        favoriteQuery.findInBackground(new FindCallback<Favorite>() {
-            @Override
-            public void done(List<Favorite> data, ParseException e) {
-                favorites = data;
-                completedRequests++;
-
-                if(completedRequests == 3)
-                    updateQuoteListView(refreshListView);
-            }
-        });*/
-    }
-
     public void loadFavorites(){
 
         ParseQuery<Favorite> favoriteQuery = ParseQuery.getQuery("Favorite");
-        favoriteQuery.whereEqualTo("userId", currentUser);
+        favoriteQuery.whereEqualTo("user", currentUser);
         favoriteQuery.findInBackground(new FindCallback<Favorite>() {
             @Override
             public void done(List<Favorite> data, ParseException e) {
-                favorites = data;
+                QuotationsApplication.favorites = data;
                 completedRequests++;
 
                 if(completedRequests == 2)
@@ -289,11 +249,13 @@ public class HomeActivity extends Activity {
 
     public void updateQuoteListView(boolean refresh) {
         if (refresh) {
-            adapter = new ListviewAdapter(this, quotations, likes, favorites);
+            adapter = new ListviewQuoteAdapter(this, quotations);
             listView.setAdapter(adapter);
         } else
             adapter.notifyDataSetChanged();
         showLoading(false);
+        if(listView.getCount() == 0)
+            ((TextView)findViewById(R.id.emptyElement)).setText(getText(R.string.no_result_found));
     }
 
     public void updateCategoryListView() {
@@ -331,10 +293,11 @@ public class HomeActivity extends Activity {
 
         switch (item.getItemId()) {
             case R.id.favorites:
+                startActivity(new Intent(getBaseContext(), ActivityFavorites.class));
                 break;
             case R.id.logout:
+            case R.id.register:
                 ParseUser.getCurrentUser().logOut();
-
                 startActivity(new Intent(getBaseContext(), SplashActivity.class));
                 finish();
                 break;
@@ -346,7 +309,10 @@ public class HomeActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.home_menu, menu);
+        if(currentUser == null)
+            getMenuInflater().inflate(R.menu.home_guess_menu, menu);
+        else
+            getMenuInflater().inflate(R.menu.home_menu, menu);
 
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
@@ -355,7 +321,24 @@ public class HomeActivity extends Activity {
         searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(getComponentName()));
 
-        return true;//super.onCreateOptionsMenu(menu);
+        return true;
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        handleIntent(intent);
+    }
+
+    private void handleIntent(Intent intent) {
+
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+
+            searchTerm = query;
+
+            loadQuotes(getCategoryFilter(), searchTerm, 1);
+            findViewById(R.id.action_search).clearFocus();
+        }
     }
 
     @Override
