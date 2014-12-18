@@ -46,3 +46,6 @@ Search view allows the user to enter one or more search keywords. The app search
 #### Category
 
 The Category option allows the user to select from different categories. When the user chooses a certain category, the scrollable list of quotes appears on the screen.
+
+
+
