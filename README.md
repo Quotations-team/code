@@ -1,9 +1,48 @@
-# Daily Quotation Project
-## User Interface Design / Functional Specifications for Quotations project
+# Daily Quotations
+
 ### Introduction
 
-The Daily Qiotation Project is an Android app that displays famous (or infamous) quotes. 
-The users can select one or more categories from the quote database, and can also perform searches in the database based on a key word.
+The Daily Quotations Project is an Android app that displays quotes. 
+The users can select one or more categories from the quote database, and can also perform searches in the database based on keywords.
+
+
+###Views and User Experience
+The app consists of the following views/features:
+
+-Guidepages
+-Splashscreen
+-Homepage / Quote Feed
+-Categories
+-Search
+-Like Quote
+-Comment on Quote
+-Favorite
+
+####Splashscreen
+The splashscreen shows a logo on startup while the app is loading. This view will be replaced with sign up / sign in page when user is not signed in.
+
+####Sign up / Sign in
+This View will apear before homepage if user is not signed in yet. Users can sign in with their account or register with username, email, and password. Also they can tap on a link to skip this step and continue exploring the app without some features including like and comment.
+
+####Homepage / Quote Feed
+Homepage shows a continuous list of quotes from database that are ordered by popularity
+
+####Search
+Search view allows the user to enter one or more search keywords. The app searches the entire quote database for matching quotes (all keywords with And logic) and displays them as a list.
+
+####Category
+The Category view allows the user to select quotes from different categories. When the user chooses a certain category, the scrollable list of quotes appears on the screen.
+
+####Like Quote
+Users can like each quote, and see number of likes each quote has.
+
+####Comment on Quote
+Users can add comment on quote by tapping on comment button on each quote. Then single quote view will appear with the quote content, a text box to write new comment, and list of past comments to that quote.
+
+####Favorite
+Users can add each quote to their favorite list to keep them in touch for future. They can also remove each quote from favorite list by tapping on the favorite button. All favorite quotes are stored in favorite list view which is accessible from app menu.
+
+------
 
 ###Technical Spec
 
