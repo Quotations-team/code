@@ -7,39 +7,40 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/skip"
-        android:text="@string/skip"
-        android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginBottom="50dp"
-        android:padding="10dp"
-        android:textColor="#ff001af4"
-        android:textSize="22dp"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/endGuide"
-        android:id="@+id/endGuide"
-        android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginBottom="50dp"
-        android:paddingTop="16dp"
-        android:paddingBottom="16dp"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"
-        android:textColor="@color/light_blue"
-        android:textSize="22dp"
-        android:visibility="gone"
-        android:onClick="endGuideView"/>
-
     <com.viewpagerindicator.CirclePageIndicator
         android:id="@+id/indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="60dp"
         android:padding="10dp"
         android:layout_gravity="center_horizontal|bottom"/>
 
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/skip"
+        android:text="@string/skip"
+        android:layout_gravity="center_horizontal|bottom"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="#fff"
+        android:textSize="24dp"
+        android:background="#df594b"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/endGuide"
+        android:id="@+id/endGuide"
+        android:layout_gravity="center_horizontal|bottom"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="#fff"
+        android:textSize="24dp"
+        android:background="#df594b"
+        android:onClick="endGuideView"
+        android:visibility="gone"
+        />
 </FrameLayout>

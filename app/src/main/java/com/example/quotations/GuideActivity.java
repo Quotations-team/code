@@ -2,6 +2,7 @@ package com.example.quotations;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
@@ -13,13 +14,13 @@ import android.widget.TextView;
 import com.viewpagerindicator.CirclePageIndicator;
 import com.viewpagerindicator.GuideFragmentAdapter;
 
-/**
- * Created by Saman on 12/3/2014.
- */
+
 public class GuideActivity extends FragmentActivity {
 
     SharedPreferences wmbPreference;
     CirclePageIndicator circlePageIndicator;
+    Typeface SanchezFont;
+    Typeface Helveticaneue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

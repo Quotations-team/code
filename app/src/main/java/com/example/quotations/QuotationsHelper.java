@@ -24,7 +24,7 @@ public class QuotationsHelper {
 
     public static void showAlertDialog(Context c, String message) {
         new AlertDialog.Builder(c)
-                .setTitle("Guess User")
+                .setTitle("Guest User")
                 .setMessage(message)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {

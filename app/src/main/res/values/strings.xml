@@ -19,8 +19,8 @@
 
 
     <!-- Signin -->
-    <string name="signin">Signin</string>
-    <string name="signup">Signup</string>
+    <string name="signin">Sign in</string>
+    <string name="signup">Sign up</string>
     <string name="skipSignin">Skip</string>
 
     <!-- Signin Messages -->
@@ -29,8 +29,8 @@
     <string name="signin_unknown_error">Something was wrong. Try again later please.</string>
 
     <!-- Signup -->
-    <string name="register">Signup / Signin</string>
-    <string name="register_detail">Signin to add comment and like quotes or </string>
+    <string name="register">Sign up / Sign in</string>
+    <string name="register_detail">Sign in to add comment and like quotes or </string>
     <string name="register_skip">Continue without registration</string>
 
 
@@ -44,7 +44,7 @@
 
     <!-- signup page -->
     <string name="title_activity_signup">SignupActivity</string>
-    <string name="button_go_to_sign_in">Signin</string>
+    <string name="button_go_to_sign_in">Sign in</string>
     <string name="button_signup_skip">Skip</string>
     <string name="button_signup_done">Done</string>
     <string name="text_email_label">Email</string>
@@ -58,7 +58,7 @@
 
     <!-- signin page -->
     <string name="title_activity_signin">SigninActivity</string>
-    <string name="button_go_to_sign_up">Signup</string>
+    <string name="button_go_to_sign_up">Sign up</string>
     <string name="button_signin_cancel">Cancel</string>
     <string name="text_user_name_label">Username</string>
     <string name="text_password_label">Password</string>

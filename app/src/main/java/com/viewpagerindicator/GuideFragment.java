@@ -1,10 +1,14 @@
 package com.viewpagerindicator;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.example.quotations.R;
 
 
 public final class GuideFragment extends Fragment {
@@ -31,22 +35,20 @@ public final class GuideFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        /*
-        TextView text = new TextView(getActivity());
-        text.setGravity(Gravity.CENTER);
-        text.setText(mContent);
-        text.setTextSize(20 * getResources().getDisplayMetrics().density);
-        text.setPadding(20, 20, 20, 20);
-
-        LinearLayout layout = new LinearLayout(getActivity());
-        layout.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
-        layout.setGravity(Gravity.CENTER);
-        layout.addView(text);
-        return layout;
-        */
-
         // Inflate the layout for this fragment
-        return inflater.inflate(mResourceId, container, false);
+        View vv = inflater.inflate(mResourceId, container, false);
+
+        Typeface SanchezFont = Typeface.createFromAsset(container.getContext().getAssets(), "fonts/sanchez.ttf");
+        Typeface Robotoregular = Typeface.createFromAsset(container.getContext().getAssets(), "fonts/robotoregular.ttf");
+
+        TextView tv = ((TextView)vv.findViewById(R.id.textViewGuideTitle));
+        if(tv != null)
+            tv.setTypeface(SanchezFont);
+        tv = ((TextView)vv.findViewById(R.id.textViewGuideDescription));
+        if(tv != null)
+            tv.setTypeface(Robotoregular);
+
+        return vv;
     }
 
     @Override

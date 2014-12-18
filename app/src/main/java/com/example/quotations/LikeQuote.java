@@ -83,12 +83,16 @@ class LikeQuote extends AsyncTask<Object, Boolean, Boolean> {
     }
 
     protected void onPostExecute(Boolean result) {
-        if(result)
+        try {
+        if (result)
             setLikeButtonLayout(btn, currentButtonStatus);
 
         // get quote from button parent view then get the status text
-        TextView currentStatusTextView = (TextView) ((View) btn.getParent().getParent()).findViewById(R.id.quoteStatus);
-        currentStatusTextView.setText(QuotationsHelper.getStatusText(currentQuote));
+            TextView currentStatusTextView = (TextView) ((View) btn.getParent().getParent()).findViewById(R.id.quoteStatus);
+            currentStatusTextView.setText(QuotationsHelper.getStatusText(currentQuote));
+        }
+        catch (Exception ex) {
+        }
     }
 
     public static void setLikeButtonLayout(Button likeButton, ButtonStatus buttonStatus) {
