@@ -2,8 +2,7 @@
 
 ### Introduction
 
-The Daily Quotations Project is an Android app that displays quotes. 
-The users can select one or more categories from the quote database, and can also perform searches in the database based on keywords.
+The Daily Quotations Project is an Android app that displays quotes. Users can select a category or perform a search by keywoards to find quotes from database.
 
 
 ###Views and User Experience
